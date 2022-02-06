@@ -24,9 +24,22 @@ def input_bookings():
     print("Data must be in the form of 7 numbers seperated by commas\n")
 
     bookings_input = input("Enter your data here: ")
-    print(f"\nYou have entered your weekly booking numbers as {bookings_input}")
-    bookings = [int(booking) for booking in bookings_input.split(",")]
-    print(bookings)
+    print(f"\nYou have entered your weekly bookings as {bookings_input}")
+    return bookings_input
+
+
+def validate_bookings(data):
+    """
+    Check the inputted data meets the requirements and
+    if not returns an error message
+    """
+    while True:
+        try:
+            bookings = [int(d) for d in data.split(",")]
+            print(bookings)
+        except ValueError():
+            print("Values must be numerical between 0 and 100")
+        return bookings
 
 
 # def add_bookings_to_spreadsheet():
@@ -43,7 +56,14 @@ def input_bookings():
 
 # def add_staff_numbers_to_spreadsheet():
 
-# def main():
 
-input_bookings()
+def main():
+    """
+    Runs the main functions of the python code
+    """
+    bookings_data = input_bookings()
+    validate_bookings(bookings_data)
+
+
+main()
 
