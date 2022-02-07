@@ -20,24 +20,54 @@ def request_action():
     """
     Asks the user what action they wish to perform
     """
-    print("Do you wish to:")
-    print("1. Enter a new booking")
-    print("2. View total number of bookings")
-    print("3. Calculate staff numbers required for following week\n")
-    choice = input("Please type the number that corresponds to your choice: ")
+    while True:
+        print("Do you wish to:")
+        print("1. Enter a new booking")
+        print("2. View total number of bookings")
+        print("3. Calculate staff numbers required for following week\n")
+        choice = input("Please type the number of your choice: ")
+
+        if validate_request(choice):
+            print(f"\nYou have selected {choice} is this correct? (Y/N)")
+            check = input()
+            if validate_check(check):
+                if check == "Y":
+                    print("\nYou have confirmed your answer")
+                    break
+                else:
+                    print("\nPlease start again\n")
+
     return choice
 
 
 def validate_request(value):
     """
-    Take the choice selected by the user and
+    Takes the choice selected by the user and
     checks it's a valid answer
     """
     try:
         int(value)
+        print(value)
+        #if value != 1 or 2 or 3:
+         #   raise ValueError("Input must be 1, 2 or 3")
     except ValueError as e:
         print(f"\nInvalid data: {e}, please try again.\n")
-        main()
+        return False
+    return True
+
+
+def validate_check(value):
+    """
+    Takes the confirmation input by the user
+    and check's it's a valid answer
+    """
+    try:
+        if value != "Y" or "y" or "N" or "n":
+            raise ValueError("Input must be Y or N, please select again")
+    except ValueError as e:
+        print(f"Invalid data, {e}, please try again.\n")
+        return False
+    return True
 
 
 # def input_bookings():
