@@ -16,31 +16,55 @@ SHEET = gspread.authorize(SCOPED_CREDS).open("restaurant_budget")
 # print(data)
 
 
-def input_bookings():
+def request_action():
     """
-    Get bookings figures inputted by user
+    Asks the user what action they wish to perform
     """
-    print("Please enter your booking numbers for the week, Monday to Sunday")
-    print("Data must be in the form of 7 numbers seperated by commas\n")
+    print("Do you wish to:")
+    print("1. Enter a new booking")
+    print("2. View total number of bookings")
+    print("3. Calculate staff numbers required for following week\n")
+    choice = input("Please type the number that corresponds to your choice: ")
+    return choice
 
-    bookings_input = input("Enter your data here: ")
-    print(f"\nYou have entered your weekly bookings as {bookings_input}")
-    return bookings_input
 
-
-def validate_bookings(data):
+def validate_request(value):
     """
-    Check the inputted data meets the requirements and
-    if not returns an error message
+    Take the choice selected by the user and
+    checks it's a valid answer
     """
-    while True:
-        try:
-            bookings = [int(d) for d in data.split(",")]
-            print(bookings)
-        except ValueError():
-            print("Values must be numerical between 0 and 100")
-        return bookings
+    try:
+        int(value)
+    except ValueError as e:
+        print(f"\nInvalid data: {e}, please try again.\n")
+        main()
 
+
+# def input_bookings():
+    # """
+    # Get bookings figures inputted by user
+    # """
+    # print("Please enter your booking numbers for the week, Monday to Sunday")
+    # print("Data must be in the form of 7 numbers seperated by commas\n")
+
+    # bookings_input = input("Enter your data here: ")
+    # print(f"\nYou have entered your weekly bookings as {bookings_input}")
+    # return bookings_input
+    # bookings = [int(d) for d in data.split(",")]
+
+
+# def validate_bookings(data):
+    # """
+    # Check the inputted data meets the requirements and
+    # if not returns an error message
+    # """
+    # try:
+        # for d in data:
+            # if 0 > d or d < 100:
+                # raise ValueError(
+                    # "Number of bookings must be between 0 and 100")
+    # except ValueError():
+        # print("Values must be numerical between 0 and 100")
 
 # def add_bookings_to_spreadsheet():
 
@@ -61,8 +85,10 @@ def main():
     """
     Runs the main functions of the python code
     """
-    bookings_data = input_bookings()
-    validate_bookings(bookings_data)
+    request = request_action()
+    validate_request(request)
+    # bookings_data = input_bookings()
+    # validate_bookings(bookings_data)
 
 
 main()
