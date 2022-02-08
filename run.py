@@ -32,7 +32,7 @@ def request_action():
             check = input()
             if validate_check(check):
                 if check == "Y" or check == "y":
-                    print("\nYou have confirmed your answer")
+                    print("\nYou have confirmed your answer\n")
                     break
                 else:
                     print("\nPlease start again\n")
@@ -48,7 +48,6 @@ def validate_request(value):
     try:
         if value not in ("1", "2", "3"):
             raise ValueError("Input must be 1, 2 or 3")
-        int(value)
     except ValueError as e:
         print(f"\nInvalid data: {e}, please try again.\n")
         return False
@@ -69,12 +68,28 @@ def validate_check(value):
     return True
 
 
-# def input_bookings():
-    # """
-    # Get bookings figures inputted by user
-    # """
-    # print("Please enter your booking numbers for the week, Monday to Sunday")
-    # print("Data must be in the form of 7 numbers seperated by commas\n")
+def interpret_request(variable):
+    """
+    Takes the choice selected by the user and 
+    works out which route they wish to proceed with
+    """
+    print(f"Loading option {variable}...\n")
+    variable = int(variable)
+    if variable == 1:
+       input_booking()
+    elif variable == 2:
+        view_bookings()
+    elif variable == 3:
+        calculate_staff_numbers()
+    else:
+       print("You have selected an unavailable option. Please start again")
+
+
+def input_booking():
+    """
+    Get bookings inputted by user
+    """
+    print("Which day would you like to make a booking for?")
 
     # bookings_input = input("Enter your data here: ")
     # print(f"\nYou have entered your weekly bookings as {bookings_input}")
@@ -115,7 +130,8 @@ def main():
     Runs the main functions of the python code
     """
     request = request_action()
-    validate_request(request)
+    interpret_request(request)
+    # validate_request(request)
     # bookings_data = input_bookings()
     # validate_bookings(bookings_data)
 
