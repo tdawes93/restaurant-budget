@@ -31,7 +31,7 @@ def request_action():
             print(f"\nYou have selected {choice} is this correct? (Y/N)")
             check = input()
             if validate_check(check):
-                if check == "Y":
+                if check == "Y" or check == "y":
                     print("\nYou have confirmed your answer")
                     break
                 else:
@@ -46,10 +46,9 @@ def validate_request(value):
     checks it's a valid answer
     """
     try:
+        if value not in ("1", "2", "3"):
+            raise ValueError("Input must be 1, 2 or 3")
         int(value)
-        print(value)
-        #if value != 1 or 2 or 3:
-         #   raise ValueError("Input must be 1, 2 or 3")
     except ValueError as e:
         print(f"\nInvalid data: {e}, please try again.\n")
         return False
@@ -62,7 +61,7 @@ def validate_check(value):
     and check's it's a valid answer
     """
     try:
-        if value != "Y" or "y" or "N" or "n":
+        if value not in ("n", "y", "N", "Y"):
             raise ValueError("Input must be Y or N, please select again")
     except ValueError as e:
         print(f"Invalid data, {e}, please try again.\n")
