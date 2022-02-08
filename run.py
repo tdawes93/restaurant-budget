@@ -89,14 +89,30 @@ def input_booking():
     """
     Get bookings inputted by user
     """
-    print("Which day would you like to make a booking for?")
-
+    while True:
+        day = input("Please enter the day of your booking here: ")
+        if validate_day(day):
+            print(f"You have selected {day}")
     # bookings_input = input("Enter your data here: ")
     # print(f"\nYou have entered your weekly bookings as {bookings_input}")
     # return bookings_input
     # bookings = [int(d) for d in data.split(",")]
 
 
+def validate_day(day):
+    """
+    Takes the day entered by the user and 
+    checks it's valid
+    """
+    try:
+        if day not in ("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"):
+            raise ValueError("Input must be a day of the week with a capital letter")
+    except ValueError as e:
+        print(f"\nInvalid data: {e}, please try again.\n")
+        return False
+    return True
+
+    
 # def validate_bookings(data):
     # """
     # Check the inputted data meets the requirements and
