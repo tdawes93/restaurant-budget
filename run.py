@@ -70,19 +70,19 @@ def validate_check(value):
 
 def interpret_request(variable):
     """
-    Takes the choice selected by the user and 
+    Takes the choice selected by the user and
     works out which route they wish to proceed with
     """
     print(f"Loading option {variable}...\n")
     variable = int(variable)
     if variable == 1:
-       input_booking()
+        input_booking()
     elif variable == 2:
         view_bookings()
     elif variable == 3:
         calculate_staff_numbers()
     else:
-       print("You have selected an unavailable option. Please start again")
+        print("You have selected an unavailable option. Please start again")
 
 
 def input_booking():
@@ -90,9 +90,23 @@ def input_booking():
     Get bookings inputted by user
     """
     while True:
+        print("Please enter the day of your booking.")
+        print("It must be entered in shortened days of the week")
+        print("E.g. Mon, Tues, Wed, Thurs, Fri, Sat, Sun\n")
         day = input("Please enter the day of your booking here: ")
         if validate_day(day):
             print(f"You have selected {day}")
+            break
+    while True:
+        print("Please enter the number of people in your booking")
+        print("We do not accept tables of more than 10\n")
+        people = input("Please enter here: ")
+        if validate_people(people):
+            print(f"You have selected {people} people")
+            break
+    booking = dict.fromkeys(day, people)
+    print(booking)
+
     # bookings_input = input("Enter your data here: ")
     # print(f"\nYou have entered your weekly bookings as {bookings_input}")
     # return bookings_input
@@ -101,18 +115,18 @@ def input_booking():
 
 def validate_day(day):
     """
-    Takes the day entered by the user and 
+    Takes the day entered by the user and
     checks it's valid
     """
     try:
-        if day not in ("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"):
-            raise ValueError("Input must be a day of the week with a capital letter")
+        if day not in ("Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"):
+            raise ValueError("Input must be a day of the week")
     except ValueError as e:
         print(f"\nInvalid data: {e}, please try again.\n")
         return False
     return True
 
-    
+
 # def validate_bookings(data):
     # """
     # Check the inputted data meets the requirements and
