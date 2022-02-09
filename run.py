@@ -29,9 +29,9 @@ def request_action():
 
         if validate_request(choice):
             print(f"\nYou have selected {choice} is this correct? (Y/N)")
-            check = input()
+            check = input().capitalize()
             if validate_check(check):
-                if check == "Y" or check == "y":
+                if check == "Y":
                     print("\nYou have confirmed your answer\n")
                     break
                 else:
@@ -60,7 +60,7 @@ def validate_check(value):
     and check's it's a valid answer
     """
     try:
-        if value not in ("n", "y", "N", "Y"):
+        if value not in ("N", "Y"):
             raise ValueError("Input must be Y or N, please select again")
     except ValueError as e:
         print(f"Invalid data, {e}, please try again.\n")
@@ -77,9 +77,12 @@ def interpret_request(variable):
     variable = int(variable)
     if variable == 1:
         booking = input_booking()
-        print(booking)
+        print("\nProcessing booking...")
+        print(f"\nThank you for making a booking.\nYour booking: {booking}")
+        add_booking_to_spreadsheet(booking)
     elif variable == 2:
-        view_bookings()
+        weekly_bookings = view_bookings()
+        print(f"Upcoming bookings this week:\n{weekly_bookings}")
     elif variable == 3:
         calculate_staff_numbers()
     else:
@@ -92,9 +95,9 @@ def input_booking():
     """
     while True:
         print("Please enter the day of your booking.")
-        print("It must be entered in shortened days of the week")
-        print("E.g. Mon, Tues, Wed, Thurs, Fri, Sat, Sun\n")
-        day = input("Please enter the day of your booking here: ")
+        print("It must be entered with the full word")
+        print("E.g. Monday, Tuesday\n")
+        day = input("Please enter the day of your booking here: ").capitalize()
         if validate_day(day):
             print(f"You have selected {day}")
             break
@@ -103,7 +106,7 @@ def input_booking():
         print("We do not accept tables of more than 10\n")
         people = input("Please enter here: ")
         if validate_people(people):
-            print(f"You have selected {people} people")
+            print(f"\nYou have selected {people} people")
             break
     day_of_booking = []
     day_of_booking.append(day)
@@ -121,8 +124,16 @@ def validate_day(day):
     Takes the day entered by the user and
     checks it's valid
     """
+    days_of_week = [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"]
     try:
-        if day not in ("Mon", "Tues", "Wed", "Thurs", "Fri", "Sat", "Sun"):
+        if day not in days_of_week:
             raise ValueError("Input must be a day of the week")
     except ValueError as e:
         print(f"\nInvalid data: {e}, please try again.\n")
@@ -154,9 +165,9 @@ def view_bookings():
     this_weeks_bookings = [int(n) for n in bookings[-1]]
     days = bookings[0]
     weekly_bookings = dict(zip(days, this_weeks_bookings))
-    print(weekly_bookings)
+    return weekly_bookings
 
-    
+
 # def validate_bookings(data):
     # """
     # Check the inputted data meets the requirements and
@@ -170,7 +181,60 @@ def view_bookings():
     # except ValueError():
         # print("Values must be numerical between 0 and 100")
 
-# def add_bookings_to_spreadsheet():
+
+def add_booking_to_spreadsheet(booking):
+    """
+    Takes the dictionary of the booking made by the user
+    and saves it to the worksheet 'bookings'
+    """
+    print("Do you wish to save your booking? (Y/N)")
+    check = input().capitalize()
+    if validate_check(check):
+        if check == "Y":
+            print("\nSaving booking...\n")
+            day = list(booking.keys())[0]
+            number = list(booking.values())[0]
+            bookings_worksheet = SHEET.worksheet("bookings")
+            bookings_data = bookings_worksheet.get_all_values()
+            number_row = [int(b) for b in bookings_data[-1]]
+            if day == "Monday":
+                num = [number, 0, 0, 0, 0, 0, 0]
+                r = [x + y for x, y in zip(number_row, num)]
+                print(r)
+                bookings_worksheet.append_row(r)
+            elif day == "Tuesday":
+                num = [0, number, 0, 0, 0, 0, 0]
+                r = [x + y for x, y in zip(number_row, num)]
+                print(r)
+                bookings_worksheet.append_row(r)
+            elif day == "Wednesday":
+                num = [0, 0, number, 0, 0, 0, 0]
+                r = [x + y for x, y in zip(number_row, num)]
+                print(r)
+                bookings_worksheet.append_row(r)
+            elif day == "Thursday":
+                num = [0, 0, 0, number, 0, 0, 0]
+                r = [x + y for x, y in zip(number_row, num)]
+                print(r)
+                bookings_worksheet.append_row(r)
+            elif day == "Friday":
+                num = [0, 0, 0, 0, number, 0, 0]
+                r = [x + y for x, y in zip(number_row, num)]
+                print(r)
+                bookings_worksheet.append_row(r)
+            elif day == "Saturday":
+                num = [0, 0, 0, 0, 0, number, 0]
+                r = [x + y for x, y in zip(number_row, num)]
+                print(r)
+                bookings_worksheet.append_row(r)
+            elif day == "Sunday":
+                num = [0, 0, 0, 0, 0, 0, number]
+                r = [x + y for x, y in zip(number_row, num)]
+                print(r)
+                bookings_worksheet.append_row(r)
+        else:
+            print("\nBooking deleted\n")
+
 
 # def calculate_walkins():
 
