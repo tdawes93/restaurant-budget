@@ -76,7 +76,8 @@ def interpret_request(variable):
     print(f"Loading option {variable}...\n")
     variable = int(variable)
     if variable == 1:
-        input_booking()
+        booking = input_booking()
+        print(booking)
     elif variable == 2:
         view_bookings()
     elif variable == 3:
@@ -108,7 +109,7 @@ def input_booking():
     day_of_booking.append(day)
     people = int(people)
     booking = dict.fromkeys(day_of_booking, people)
-    print(booking)
+    return booking
     # bookings_input = input("Enter your data here: ")
     # print(f"\nYou have entered your weekly bookings as {bookings_input}")
     # return bookings_input
@@ -144,6 +145,13 @@ def validate_people(number):
         return False
 
 
+def view_bookings():
+    """
+    Retreives the most up to date data from the bookings
+    worksheet and displays this weeks bookings to the user
+    """
+
+    
 # def validate_bookings(data):
     # """
     # Check the inputted data meets the requirements and
