@@ -104,10 +104,11 @@ def input_booking():
         if validate_people(people):
             print(f"You have selected {people} people")
             break
-    print(day)
-    print(people)
-    # booking = dict.fromkeys(day, people)
-    # print(booking)
+    day_of_booking = []
+    day_of_booking.append(day)
+    people = int(people)
+    booking = dict.fromkeys(day_of_booking, people)
+    print(booking)
     # bookings_input = input("Enter your data here: ")
     # print(f"\nYou have entered your weekly bookings as {bookings_input}")
     # return bookings_input
@@ -141,7 +142,9 @@ def validate_people(number):
     except ValueError as e:
         print(f"Invalid data: {e}, please try again")
         return False
-    # def validate_bookings(data):
+
+
+# def validate_bookings(data):
     # """
     # Check the inputted data meets the requirements and
     # if not returns an error message
