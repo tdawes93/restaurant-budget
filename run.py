@@ -150,6 +150,11 @@ def view_bookings():
     Retreives the most up to date data from the bookings
     worksheet and displays this weeks bookings to the user
     """
+    bookings = SHEET.worksheet("bookings").get_all_values()
+    this_weeks_bookings = [int(n) for n in bookings[-1]]
+    days = bookings[0]
+    weekly_bookings = dict(zip(days, this_weeks_bookings))
+    print(weekly_bookings)
 
     
 # def validate_bookings(data):
