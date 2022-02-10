@@ -233,7 +233,7 @@ def add_booking_to_spreadsheet(booking):
 
 def calculate_staff_numbers():
     """
-    Function that runs other functions to calculate how 
+    Function that runs other functions to calculate how
     many staff are required to work for the upcoming week
     """
     print(
@@ -242,6 +242,15 @@ def calculate_staff_numbers():
     print("Have you entered all your bookings for the week? (Y/N)")
     check = input().capitalize()
     validate_check(check)
+    if check == "Y":
+        walkin_data = calculate_walkins()
+        add_walkins_to_spreadsheet(walkin_data)
+        takings_data = calculate_takings()
+        add_takings_to_spreadsheet(takings_data)
+        staff_data = calculate_staff_numbers()
+        add_staff_numbers_to_spreadsheet(staff_data)
+    else:
+        print("Please finish entering your bookings")
 
 # def calculate_walkins():
 
@@ -251,6 +260,7 @@ def calculate_staff_numbers():
 
 # def add_takings_to_spreadsheet():
 
+# def calculate_staff_numbers():
 
 # def add_staff_numbers_to_spreadsheet():
 
