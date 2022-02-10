@@ -202,41 +202,46 @@ def add_booking_to_spreadsheet(booking):
             if day == "Monday":
                 num = [number, 0, 0, 0, 0, 0, 0]
                 r = [x + y for x, y in zip(number_row, num)]
-                print(r)
                 bookings_worksheet.append_row(r)
             elif day == "Tuesday":
                 num = [0, number, 0, 0, 0, 0, 0]
                 r = [x + y for x, y in zip(number_row, num)]
-                print(r)
                 bookings_worksheet.append_row(r)
             elif day == "Wednesday":
                 num = [0, 0, number, 0, 0, 0, 0]
                 r = [x + y for x, y in zip(number_row, num)]
-                print(r)
                 bookings_worksheet.append_row(r)
             elif day == "Thursday":
                 num = [0, 0, 0, number, 0, 0, 0]
                 r = [x + y for x, y in zip(number_row, num)]
-                print(r)
                 bookings_worksheet.append_row(r)
             elif day == "Friday":
                 num = [0, 0, 0, 0, number, 0, 0]
                 r = [x + y for x, y in zip(number_row, num)]
-                print(r)
                 bookings_worksheet.append_row(r)
             elif day == "Saturday":
                 num = [0, 0, 0, 0, 0, number, 0]
                 r = [x + y for x, y in zip(number_row, num)]
-                print(r)
                 bookings_worksheet.append_row(r)
             elif day == "Sunday":
                 num = [0, 0, 0, 0, 0, 0, number]
                 r = [x + y for x, y in zip(number_row, num)]
-                print(r)
                 bookings_worksheet.append_row(r)
         else:
             print("\nBooking deleted\n")
 
+
+def calculate_staff_numbers():
+    """
+    Function that runs other functions to calculate how 
+    many staff are required to work for the upcoming week
+    """
+    print(
+        "You are about to calculate the required number of staff for the week"
+        )
+    print("Have you entered all your bookings for the week? (Y/N)")
+    check = input().capitalize()
+    validate_check(check)
 
 # def calculate_walkins():
 
@@ -246,7 +251,6 @@ def add_booking_to_spreadsheet(booking):
 
 # def add_takings_to_spreadsheet():
 
-# def calculate_staff_numbers():
 
 # def add_staff_numbers_to_spreadsheet():
 
