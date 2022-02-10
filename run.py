@@ -197,6 +197,8 @@ def add_booking_to_spreadsheet(booking):
             bookings_worksheet = SHEET.worksheet("bookings")
             bookings_data = bookings_worksheet.get_all_values()
             number_row = [int(b) for b in bookings_data[-1]]
+            bookings_col = bookings_worksheet.col_values(1)
+            bookings_worksheet.delete_rows(len(bookings_col))
             if day == "Monday":
                 num = [number, 0, 0, 0, 0, 0, 0]
                 r = [x + y for x, y in zip(number_row, num)]
