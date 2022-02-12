@@ -248,7 +248,7 @@ def calculate_staff_numbers():
         print("Calculating number of staff required for the upcoming week...")
         average_walkins = calculate_walkins()
         add_walkins_to_spreadsheet(average_walkins)
-        # takings_data = calculate_takings()
+        takings_data = calculate_takings()
         # add_takings_to_spreadsheet(takings_data)
         # staff_data = calculate_staff_required()
         # add_staff_numbers_to_spreadsheet(staff_data)
@@ -283,7 +283,27 @@ def add_walkins_to_spreadsheet(walkin_data):
     walkins_worksheet.append_row(walkin_data)
 
 
-# def calculate_takings():
+def calculate_takings():
+    """
+    Uses the bookings data and the walkins data to 
+    calculage the predicted amount of money taken per day
+    by multiplying by a fixed amount
+    """
+    bookings_data = SHEET.worksheet("bookings").get_all_values()
+    bookings_row = [int(b) for b in bookings_data[-1]]
+    walkins_data = SHEET.worksheet("walkins").get_all_values()
+    walkins_row = [int(w) for w in walkins_data[-1]]
+    covers = [x + y for x, y in zip(bookings_row, walkins_row)]
+    print(covers)
+    takings_row = []
+    for i in range (0, 5):
+        takings = covers[i] * 15
+        takings_row.append(takings)
+    for i in range (5, 7):
+        takings = covers[i] * 25
+        takings_row.append(takings)
+    return takings_row
+
 
 # def add_takings_to_spreadsheet():
 
