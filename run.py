@@ -1,5 +1,7 @@
 import gspread
 from google.oauth2.service_account import Credentials
+import statistics
+import math
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -243,18 +245,42 @@ def calculate_staff_numbers():
     check = input().capitalize()
     validate_check(check)
     if check == "Y":
-        walkin_data = calculate_walkins()
-        add_walkins_to_spreadsheet(walkin_data)
-        takings_data = calculate_takings()
-        add_takings_to_spreadsheet(takings_data)
-        staff_data = calculate_staff_numbers()
-        add_staff_numbers_to_spreadsheet(staff_data)
+        print("Calculating number of staff required for the upcoming week...")
+        average_walkins = calculate_walkins()
+        add_walkins_to_spreadsheet(average_walkins)
+        # takings_data = calculate_takings()
+        # add_takings_to_spreadsheet(takings_data)
+        # staff_data = calculate_staff_required()
+        # add_staff_numbers_to_spreadsheet(staff_data)
     else:
         print("Please finish entering your bookings")
 
-# def calculate_walkins():
 
-# def add_walkins_to_spreadsheet():
+def calculate_walkins():
+    """
+    Takes the last 10 weeks walkin numbers for each day
+    and averages them, predicting the number of walkins
+    for the upcoming week
+    """
+    walkin_data = SHEET.worksheet("walkins").get_all_values()
+    days_of_week = walkin_data[1]
+    average_walkins = []
+    for i in range(1, (len(days_of_week) + 1)):
+        daily_walkins = SHEET.worksheet("walkins").col_values(i)
+        last_10_weeks_str = (daily_walkins[-10:])
+        last_10_weeks = [int(walkin) for walkin in last_10_weeks_str]
+        average_walkins_by_day = math.ceil(statistics.fmean(last_10_weeks))
+        average_walkins.append(average_walkins_by_day)
+    return average_walkins
+
+
+def add_walkins_to_spreadsheet(walkin_data):
+    """
+    Takes the average walkins and adds the list to the google sheets
+    """
+    walkins_worksheet = SHEET.worksheet("walkins")
+    walkins_worksheet.append(walkin_data)
+
 
 # def calculate_takings():
 
