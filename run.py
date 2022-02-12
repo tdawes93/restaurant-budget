@@ -259,7 +259,8 @@ def calculate_staff_numbers():
 def calculate_walkins():
     """
     Takes the last 10 weeks walkin numbers for each day
-    and averages them, predicting the number of walkins
+    and averages them, rounding up to the next integer,
+    therefore predicting the number of walkins
     for the upcoming week
     """
     walkin_data = SHEET.worksheet("walkins").get_all_values()
@@ -279,7 +280,7 @@ def add_walkins_to_spreadsheet(walkin_data):
     Takes the average walkins and adds the list to the google sheets
     """
     walkins_worksheet = SHEET.worksheet("walkins")
-    walkins_worksheet.append(walkin_data)
+    walkins_worksheet.append_row(walkin_data)
 
 
 # def calculate_takings():
