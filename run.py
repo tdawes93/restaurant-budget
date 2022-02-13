@@ -252,7 +252,7 @@ def calculate_staff_numbers():
         takings_data = calculate_takings()
         add_takings_to_spreadsheet(takings_data)
         staff_data = calculate_staff_required()
-        # add_staff_numbers_to_spreadsheet(staff_data)
+        add_staff_numbers_to_spreadsheet(staff_data)
     else:
         print("Please finish entering your bookings")
 
@@ -333,7 +333,12 @@ def calculate_staff_required():
     return staff_numbers
 
 
-# def add_staff_numbers_to_spreadsheet():
+def add_staff_numbers_to_spreadsheet(staff_data):
+    """
+    Takes the predicted takings and adds the list to the google sheets
+    """
+    staff_worksheet = SHEET.worksheet("number of staff")
+    staff_worksheet.append_row(staff_data)
 
 
 def main():
