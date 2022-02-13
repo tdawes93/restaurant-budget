@@ -176,7 +176,7 @@ def add_booking_to_spreadsheet(booking):
     Takes the dictionary of the booking made by the user
     and saves it to the worksheet 'bookings'
     """
-    print("Do you wish to save your booking? (Y/N)")
+    print("\nDo you wish to save your booking? (Y/N)")
     check = input().capitalize()
     if validate_check(check):
         if check == "Y":
@@ -216,6 +216,7 @@ def add_booking_to_spreadsheet(booking):
                 num = [0, 0, 0, 0, 0, 0, number]
                 row = [x + y for x, y in zip(number_row, num)]
                 bookings_worksheet.append_row(row)
+            print("\n Booking saved.")
         else:
             print("\nBooking deleted\n")
 
