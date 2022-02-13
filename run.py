@@ -51,8 +51,8 @@ def validate_request(value):
     try:
         if value not in ("1", "2", "3"):
             raise ValueError("Input must be 1, 2 or 3")
-    except ValueError as e:
-        print(f"\nInvalid data: {e}, please try again.\n")
+    except ValueError as error:
+        print(f"\nInvalid data: {error}, please try again.\n")
         return False
     return True
 
@@ -65,8 +65,8 @@ def validate_check(value):
     try:
         if value not in ("N", "Y"):
             raise ValueError("Input must be Y or N, please select again")
-    except ValueError as e:
-        print(f"Invalid data, {e}, please try again.\n")
+    except ValueError as error:
+        print(f"Invalid data, {error}, please try again.\n")
         return False
     return True
 
@@ -138,8 +138,8 @@ def validate_day(day):
     try:
         if day not in days_of_week:
             raise ValueError("Input must be a day of the week")
-    except ValueError as e:
-        print(f"\nInvalid data: {e}, please try again.\n")
+    except ValueError as error:
+        print(f"\nInvalid data: {error}, please try again.\n")
         return False
     return True
 
@@ -154,8 +154,8 @@ def validate_people(number):
         if 1 <= number <= 10:
             return True
         raise ValueError("Number of people must be between 1 and 10")
-    except ValueError as e:
-        print(f"Invalid data: {e}, please try again")
+    except ValueError as error:
+        print(f"Invalid data: {error}, please try again")
         return False
 
 
@@ -190,32 +190,32 @@ def add_booking_to_spreadsheet(booking):
             bookings_worksheet.delete_rows(len(bookings_col))
             if day == "Monday":
                 num = [number, 0, 0, 0, 0, 0, 0]
-                r = [x + y for x, y in zip(number_row, num)]
-                bookings_worksheet.append_row(r)
+                row = [x + y for x, y in zip(number_row, num)]
+                bookings_worksheet.append_row(row)
             elif day == "Tuesday":
                 num = [0, number, 0, 0, 0, 0, 0]
-                r = [x + y for x, y in zip(number_row, num)]
-                bookings_worksheet.append_row(r)
+                row = [x + y for x, y in zip(number_row, num)]
+                bookings_worksheet.append_row(row)
             elif day == "Wednesday":
                 num = [0, 0, number, 0, 0, 0, 0]
-                r = [x + y for x, y in zip(number_row, num)]
-                bookings_worksheet.append_row(r)
+                row = [x + y for x, y in zip(number_row, num)]
+                bookings_worksheet.append_row(row)
             elif day == "Thursday":
                 num = [0, 0, 0, number, 0, 0, 0]
-                r = [x + y for x, y in zip(number_row, num)]
-                bookings_worksheet.append_row(r)
+                row = [x + y for x, y in zip(number_row, num)]
+                bookings_worksheet.append_row(row)
             elif day == "Friday":
                 num = [0, 0, 0, 0, number, 0, 0]
-                r = [x + y for x, y in zip(number_row, num)]
-                bookings_worksheet.append_row(r)
+                row = [x + y for x, y in zip(number_row, num)]
+                bookings_worksheet.append_row(row)
             elif day == "Saturday":
                 num = [0, 0, 0, 0, 0, number, 0]
-                r = [x + y for x, y in zip(number_row, num)]
-                bookings_worksheet.append_row(r)
+                row = [x + y for x, y in zip(number_row, num)]
+                bookings_worksheet.append_row(row)
             elif day == "Sunday":
                 num = [0, 0, 0, 0, 0, 0, number]
-                r = [x + y for x, y in zip(number_row, num)]
-                bookings_worksheet.append_row(r)
+                row = [x + y for x, y in zip(number_row, num)]
+                bookings_worksheet.append_row(row)
         else:
             print("\nBooking deleted\n")
 
