@@ -1,7 +1,8 @@
-import gspread
-from google.oauth2.service_account import Credentials
 import statistics
 import math
+import gspread
+from google.oauth2.service_account import Credentials
+
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -249,7 +250,7 @@ def calculate_staff_numbers():
         average_walkins = calculate_walkins()
         add_walkins_to_spreadsheet(average_walkins)
         takings_data = calculate_takings()
-        # add_takings_to_spreadsheet(takings_data)
+        add_takings_to_spreadsheet(takings_data)
         # staff_data = calculate_staff_required()
         # add_staff_numbers_to_spreadsheet(staff_data)
     else:
@@ -285,7 +286,7 @@ def add_walkins_to_spreadsheet(walkin_data):
 
 def calculate_takings():
     """
-    Uses the bookings data and the walkins data to 
+    Uses the bookings data and the walkins data to
     calculage the predicted amount of money taken per day
     by multiplying by a fixed amount
     """
@@ -296,16 +297,21 @@ def calculate_takings():
     covers = [x + y for x, y in zip(bookings_row, walkins_row)]
     print(covers)
     takings_row = []
-    for i in range (0, 5):
+    for i in range(0, 5):
         takings = covers[i] * 15
         takings_row.append(takings)
-    for i in range (5, 7):
+    for i in range(5, 7):
         takings = covers[i] * 25
         takings_row.append(takings)
     return takings_row
 
 
-# def add_takings_to_spreadsheet():
+def add_takings_to_spreadsheet(takings_data):
+    """
+    Takes the predicted takings and adds the list to the google sheets
+    """
+    takings_worksheet = SHEET.worksheet("takings")
+    takings_worksheet.append_row(takings_data)
 
 # def calculate_staff_numbers():
 
