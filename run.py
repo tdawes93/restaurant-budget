@@ -251,7 +251,7 @@ def calculate_staff_numbers():
         add_walkins_to_spreadsheet(average_walkins)
         takings_data = calculate_takings()
         add_takings_to_spreadsheet(takings_data)
-        # staff_data = calculate_staff_required()
+        staff_data = calculate_staff_required()
         # add_staff_numbers_to_spreadsheet(staff_data)
     else:
         print("Please finish entering your bookings")
@@ -295,7 +295,6 @@ def calculate_takings():
     walkins_data = SHEET.worksheet("walkins").get_all_values()
     walkins_row = [int(w) for w in walkins_data[-1]]
     covers = [x + y for x, y in zip(bookings_row, walkins_row)]
-    print(covers)
     takings_row = []
     for i in range(0, 5):
         takings = covers[i] * 15
@@ -313,7 +312,26 @@ def add_takings_to_spreadsheet(takings_data):
     takings_worksheet = SHEET.worksheet("takings")
     takings_worksheet.append_row(takings_data)
 
-# def calculate_staff_numbers():
+
+def calculate_staff_required():
+    """
+    Uses the data added to the takings worksheet to
+    calculate the number of staff required for each day
+    """
+    takings_data = SHEET.worksheet("takings").get_all_values()
+    takings_row = [int(b) for b in takings_data[-1]]
+    staff_numbers = []
+    for i in range(0, 5):
+        staff = math.ceil(takings_row[i] / 400)
+        if staff == 1:
+            staff += 1
+        staff_numbers.append(staff)
+    for i in range(5, 7):
+        staff = math.ceil((takings_row[i] / 400)) + 1
+        staff_numbers.append(staff)
+    print(staff_numbers)
+    return staff_numbers
+
 
 # def add_staff_numbers_to_spreadsheet():
 
