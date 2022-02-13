@@ -171,20 +171,6 @@ def view_bookings():
     return weekly_bookings
 
 
-# def validate_bookings(data):
-    # """
-    # Check the inputted data meets the requirements and
-    # if not returns an error message
-    # """
-    # try:
-        # for d in data:
-            # if 0 > d or d < 100:
-                # raise ValueError(
-                    # "Number of bookings must be between 0 and 100")
-    # except ValueError():
-        # print("Values must be numerical between 0 and 100")
-
-
 def add_booking_to_spreadsheet(booking):
     """
     Takes the dictionary of the booking made by the user
@@ -341,16 +327,12 @@ def add_staff_numbers_to_spreadsheet(staff_data):
     staff_worksheet.append_row(staff_data)
 
 
-def main():
+def start():
     """
-    Runs the main functions of the python code
+    Starts the programme and runs the initial functions
     """
     request = request_action()
     interpret_request(request)
-    # validate_request(request)
-    # bookings_data = input_bookings()
-    # validate_bookings(bookings_data)
 
 
-main()
-
+start()
