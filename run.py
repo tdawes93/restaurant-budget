@@ -105,7 +105,7 @@ def input_booking():
             print(f"You have selected {day}")
             break
     while True:
-        print("Please enter the number of people in your booking")
+        print("\nPlease enter the number of people in your booking")
         print("We do not accept tables of more than 10\n")
         people = input("Please enter here: ")
         if validate_people(people):
@@ -216,7 +216,7 @@ def add_booking_to_spreadsheet(booking):
                 num = [0, 0, 0, 0, 0, 0, number]
                 row = [x + y for x, y in zip(number_row, num)]
                 bookings_worksheet.append_row(row)
-            print("\n Booking saved.")
+            print("\nBooking saved.")
         else:
             print("\nBooking deleted\n")
 
@@ -233,13 +233,15 @@ def calculate_staff_numbers():
     check = input().capitalize()
     validate_check(check)
     if check == "Y":
-        print("Calculating number of staff required for the upcoming week...")
+        print("\nCalculating number of staff needed for the upcoming week...")
         average_walkins = calculate_walkins()
         add_walkins_to_spreadsheet(average_walkins)
         takings_data = calculate_takings()
         add_takings_to_spreadsheet(takings_data)
         staff_data = calculate_staff_required()
         add_staff_numbers_to_spreadsheet(staff_data)
+        staff_numbers = create_staff_numbers_dict()
+        print(f"\n{staff_numbers}")
     else:
         print("Please finish entering your bookings")
 
@@ -316,7 +318,6 @@ def calculate_staff_required():
     for i in range(5, 7):
         staff = math.ceil((takings_row[i] / 400)) + 1
         staff_numbers.append(staff)
-    print(staff_numbers)
     return staff_numbers
 
 
@@ -326,6 +327,18 @@ def add_staff_numbers_to_spreadsheet(staff_data):
     """
     staff_worksheet = SHEET.worksheet("number of staff")
     staff_worksheet.append_row(staff_data)
+
+
+def create_staff_numbers_dict():
+    """
+    Takes the number of staff needed for the next week
+    and creates a dictionary for the user to see
+    """
+    staff_numbers = SHEET.worksheet("number of staff").get_all_values()
+    days_of_week = staff_numbers[0]
+    next_week_staff = [int(staff) for staff in staff_numbers[-1]]
+    staff_dict = dict(zip(days_of_week, next_week_staff))
+    return staff_dict
 
 
 def start():
