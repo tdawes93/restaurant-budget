@@ -229,11 +229,11 @@ def calculate_staff_numbers():
                     "\nCalculating number of staff needed for the week..."
                     )
                 average_walkins = calculate_walkins()
-                add_walkins_to_spreadsheet(average_walkins)
+                update_worksheet(average_walkins, "walkins")
                 takings_data = calculate_takings()
-                add_takings_to_spreadsheet(takings_data)
+                update_worksheet(takings_data, "takings")
                 staff_data = calculate_staff_required()
-                add_staff_numbers_to_spreadsheet(staff_data)
+                update_worksheet(staff_data, "number of staff")
                 staff_numbers = create_staff_numbers_dict()
                 print(f"\n{staff_numbers}")
                 start_new_week()
@@ -263,12 +263,12 @@ def calculate_walkins():
     return average_walkins
 
 
-def add_walkins_to_spreadsheet(walkin_data):
+def update_worksheet(data, worksheet):
     """
     Takes the average walkins and adds the list to the google sheets
     """
-    walkins_worksheet = SHEET.worksheet("walkins")
-    walkins_worksheet.append_row(walkin_data)
+    worksheet_to_update = SHEET.worksheet(worksheet)
+    worksheet_to_update.append_row(data)
 
 
 def calculate_takings():
@@ -292,14 +292,6 @@ def calculate_takings():
     return takings_row
 
 
-def add_takings_to_spreadsheet(takings_data):
-    """
-    Takes the predicted takings and adds the list to the google sheets
-    """
-    takings_worksheet = SHEET.worksheet("takings")
-    takings_worksheet.append_row(takings_data)
-
-
 def calculate_staff_required():
     """
     Uses the data added to the takings worksheet to
@@ -317,14 +309,6 @@ def calculate_staff_required():
         staff = math.ceil((takings_row[i] / 400)) + 1
         staff_numbers.append(staff)
     return staff_numbers
-
-
-def add_staff_numbers_to_spreadsheet(staff_data):
-    """
-    Takes the predicted takings and adds the list to the google sheets
-    """
-    staff_worksheet = SHEET.worksheet("number of staff")
-    staff_worksheet.append_row(staff_data)
 
 
 def create_staff_numbers_dict():
