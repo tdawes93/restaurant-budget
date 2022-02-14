@@ -28,11 +28,11 @@ def request_action():
         print("1. Enter a new booking")
         print("2. View total number of bookings")
         print("3. Calculate staff numbers required for following week\n")
-        choice = input("Please type the number of your choice: ")
+        choice = input("Please type the number of your choice:\n")
 
         if validate_request(choice):
             print(f"\nYou have selected {choice} is this correct? (Y/N)")
-            check = input().capitalize()
+            check = input("\n").capitalize()
             if validate_check(check):
                 if check == "Y":
                     print("\nYou have confirmed your answer\n")
@@ -100,14 +100,14 @@ def input_booking():
         print("Please enter the day of your booking.")
         print("It must be entered with the full word")
         print("E.g. Monday, Tuesday\n")
-        day = input("Please enter the day of your booking here: ").capitalize()
+        day = input("Please enter the day of your booking:\n").capitalize()
         if validate_day(day):
             print(f"You have selected {day}")
             break
     while True:
         print("\nPlease enter the number of people in your booking")
         print("We do not accept tables of more than 10\n")
-        people = input("Please enter here: ")
+        people = input("Please enter here:\n")
         if validate_people(people):
             print(f"\nYou have selected {people} people")
             break
@@ -116,10 +116,6 @@ def input_booking():
     people = int(people)
     booking = dict.fromkeys(day_of_booking, people)
     return booking
-    # bookings_input = input("Enter your data here: ")
-    # print(f"\nYou have entered your weekly bookings as {bookings_input}")
-    # return bookings_input
-    # bookings = [int(d) for d in data.split(",")]
 
 
 def validate_day(day):
@@ -177,7 +173,7 @@ def add_booking_to_spreadsheet(booking):
     and saves it to the worksheet 'bookings'
     """
     print("\nDo you wish to save your booking? (Y/N)")
-    check = input().capitalize()
+    check = input("\n").capitalize()
     if validate_check(check):
         if check == "Y":
             print("\nSaving booking...\n")
@@ -230,7 +226,7 @@ def calculate_staff_numbers():
         "You are about to calculate the required number of staff for the week"
         )
     print("Have you entered all your bookings for the week? (Y/N)")
-    check = input().capitalize()
+    check = input("\n").capitalize()
     validate_check(check)
     if check == "Y":
         print("\nCalculating number of staff needed for the upcoming week...")
