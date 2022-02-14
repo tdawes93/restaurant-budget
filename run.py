@@ -225,6 +225,7 @@ def calculate_staff_numbers():
     print(
         "You are about to calculate the required number of staff for the week"
         )
+    print("Calculating the number of staff will reset to 0 bookings")
     print("Have you entered all your bookings for the week? (Y/N)")
     check = input("\n").capitalize()
     validate_check(check)
@@ -238,6 +239,7 @@ def calculate_staff_numbers():
         add_staff_numbers_to_spreadsheet(staff_data)
         staff_numbers = create_staff_numbers_dict()
         print(f"\n{staff_numbers}")
+        start_new_week()
     else:
         print("Please finish entering your bookings")
 
@@ -335,6 +337,16 @@ def create_staff_numbers_dict():
     next_week_staff = [int(staff) for staff in staff_numbers[-1]]
     staff_dict = dict(zip(days_of_week, next_week_staff))
     return staff_dict
+
+
+def start_new_week():
+    """
+    Adds a new row of all 0s into the bookings worksheet,
+    to reset the app and 'start a new week'
+    """
+    reset_row = [0, 0, 0, 0, 0, 0, 0]
+    bookings_worksheet = SHEET.worksheet("bookings")
+    bookings_worksheet.append_row(reset_row)
 
 
 def start():
