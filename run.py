@@ -31,15 +31,7 @@ def request_action():
         choice = input("Please type the number of your choice:\n")
 
         if validate_request(choice):
-            print(f"\nYou have selected {choice} is this correct? (Y/N)")
-            check = input("\n").capitalize()
-            if validate_check(check):
-                if check == "Y":
-                    print("\nYou have confirmed your answer\n")
-                    break
-                else:
-                    print("\nPlease start again\n")
-
+            break
     return choice
 
 
@@ -172,49 +164,51 @@ def add_booking_to_spreadsheet(booking):
     Takes the dictionary of the booking made by the user
     and saves it to the worksheet 'bookings'
     """
-    print("\nDo you wish to save your booking? (Y/N)")
-    check = input("\n").capitalize()
-    if validate_check(check):
-        if check == "Y":
-            print("\nSaving booking...\n")
-            day = list(booking.keys())[0]
-            number = list(booking.values())[0]
-            bookings_worksheet = SHEET.worksheet("bookings")
-            bookings_data = bookings_worksheet.get_all_values()
-            number_row = [int(b) for b in bookings_data[-1]]
-            bookings_col = bookings_worksheet.col_values(1)
-            bookings_worksheet.delete_rows(len(bookings_col))
-            if day == "Monday":
-                num = [number, 0, 0, 0, 0, 0, 0]
-                row = [x + y for x, y in zip(number_row, num)]
-                bookings_worksheet.append_row(row)
-            elif day == "Tuesday":
-                num = [0, number, 0, 0, 0, 0, 0]
-                row = [x + y for x, y in zip(number_row, num)]
-                bookings_worksheet.append_row(row)
-            elif day == "Wednesday":
-                num = [0, 0, number, 0, 0, 0, 0]
-                row = [x + y for x, y in zip(number_row, num)]
-                bookings_worksheet.append_row(row)
-            elif day == "Thursday":
-                num = [0, 0, 0, number, 0, 0, 0]
-                row = [x + y for x, y in zip(number_row, num)]
-                bookings_worksheet.append_row(row)
-            elif day == "Friday":
-                num = [0, 0, 0, 0, number, 0, 0]
-                row = [x + y for x, y in zip(number_row, num)]
-                bookings_worksheet.append_row(row)
-            elif day == "Saturday":
-                num = [0, 0, 0, 0, 0, number, 0]
-                row = [x + y for x, y in zip(number_row, num)]
-                bookings_worksheet.append_row(row)
-            elif day == "Sunday":
-                num = [0, 0, 0, 0, 0, 0, number]
-                row = [x + y for x, y in zip(number_row, num)]
-                bookings_worksheet.append_row(row)
-            print("\nBooking saved.")
-        else:
-            print("\nBooking deleted\n")
+    while True:
+        print("\nDo you wish to save your booking? (Y/N)")
+        check = input("\n").capitalize()
+        if validate_check(check):
+            if check == "Y":
+                print("\nSaving booking...\n")
+                day = list(booking.keys())[0]
+                number = list(booking.values())[0]
+                bookings_worksheet = SHEET.worksheet("bookings")
+                bookings_data = bookings_worksheet.get_all_values()
+                number_row = [int(b) for b in bookings_data[-1]]
+                bookings_col = bookings_worksheet.col_values(1)
+                bookings_worksheet.delete_rows(len(bookings_col))
+                if day == "Monday":
+                    num = [number, 0, 0, 0, 0, 0, 0]
+                    row = [x + y for x, y in zip(number_row, num)]
+                    bookings_worksheet.append_row(row)
+                elif day == "Tuesday":
+                    num = [0, number, 0, 0, 0, 0, 0]
+                    row = [x + y for x, y in zip(number_row, num)]
+                    bookings_worksheet.append_row(row)
+                elif day == "Wednesday":
+                    num = [0, 0, number, 0, 0, 0, 0]
+                    row = [x + y for x, y in zip(number_row, num)]
+                    bookings_worksheet.append_row(row)
+                elif day == "Thursday":
+                    num = [0, 0, 0, number, 0, 0, 0]
+                    row = [x + y for x, y in zip(number_row, num)]
+                    bookings_worksheet.append_row(row)
+                elif day == "Friday":
+                    num = [0, 0, 0, 0, number, 0, 0]
+                    row = [x + y for x, y in zip(number_row, num)]
+                    bookings_worksheet.append_row(row)
+                elif day == "Saturday":
+                    num = [0, 0, 0, 0, 0, number, 0]
+                    row = [x + y for x, y in zip(number_row, num)]
+                    bookings_worksheet.append_row(row)
+                elif day == "Sunday":
+                    num = [0, 0, 0, 0, 0, 0, number]
+                    row = [x + y for x, y in zip(number_row, num)]
+                    bookings_worksheet.append_row(row)
+                print("\nBooking saved.")
+            else:
+                print("\nBooking deleted\n")
+            break
 
 
 def calculate_staff_numbers():
@@ -222,26 +216,32 @@ def calculate_staff_numbers():
     Function that runs other functions to calculate how
     many staff are required to work for the upcoming week
     """
-    print(
-        "You are about to calculate the required number of staff for the week"
-        )
-    print("Calculating the number of staff will reset to 0 bookings")
-    print("Have you entered all your bookings for the week? (Y/N)")
-    check = input("\n").capitalize()
-    validate_check(check)
-    if check == "Y":
-        print("\nCalculating number of staff needed for the upcoming week...")
-        average_walkins = calculate_walkins()
-        add_walkins_to_spreadsheet(average_walkins)
-        takings_data = calculate_takings()
-        add_takings_to_spreadsheet(takings_data)
-        staff_data = calculate_staff_required()
-        add_staff_numbers_to_spreadsheet(staff_data)
-        staff_numbers = create_staff_numbers_dict()
-        print(f"\n{staff_numbers}")
-        start_new_week()
-    else:
-        print("Please finish entering your bookings")
+    while True:
+        print(
+            "You are about to calculate the  number of staff for the week"
+            )
+        print("Calculating the number of staff will reset to 0 bookings")
+        print("Have you entered all your bookings for the week? (Y/N)")
+        check = input("\n").capitalize()
+        if validate_check(check):
+            if check == "Y":
+                print(
+                    "\nCalculating number of staff needed for the week..."
+                    )
+                average_walkins = calculate_walkins()
+                add_walkins_to_spreadsheet(average_walkins)
+                takings_data = calculate_takings()
+                add_takings_to_spreadsheet(takings_data)
+                staff_data = calculate_staff_required()
+                add_staff_numbers_to_spreadsheet(staff_data)
+                staff_numbers = create_staff_numbers_dict()
+                print(f"\n{staff_numbers}")
+                start_new_week()
+                break
+            else:
+                print("Please finish entering your bookings")
+                start()
+                break
 
 
 def calculate_walkins():
@@ -349,12 +349,30 @@ def start_new_week():
     bookings_worksheet.append_row(reset_row)
 
 
+def restart():
+    """
+    Gives the user the option to restart the app or quit
+    """
+    while True:
+        choice = input(
+            "Would you like to return to the main menu? (Y/N):\n"
+            ).capitalize()
+        if validate_check(choice):
+            if choice == "Y":
+                print("\nReturning to main menu...\n")
+                start()
+            else:
+                print("Thank you for using the restaurant management app")
+            break
+
+
 def start():
     """
     Starts the programme and runs the initial functions
     """
     request = request_action()
     interpret_request(request)
+    restart()
 
 
 start()
