@@ -360,10 +360,20 @@ def restart():
         if validate_check(choice):
             if choice == "Y":
                 print("\nReturning to main menu...\n")
-                start()
+                return True
             else:
-                print("Thank you for using the restaurant management app")
+                return False
             break
+
+
+def main_menu(data):
+    """
+    Returns the user to the main menu if data = true
+    """
+    if data is True:
+        start()
+    else:
+        print("Thank you for using the restaurant management app")
 
 
 def start():
@@ -372,7 +382,8 @@ def start():
     """
     request = request_action()
     interpret_request(request)
-    restart()
+    ans = restart()
+    main_menu(ans)
 
 
 start()
