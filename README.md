@@ -44,7 +44,9 @@ The user selects their desired option and follows the on screen instructions. De
 
 The app is designed for all restaurant bookings to be made through the app throughout the previous week, then towards the end of the week the number of staff can be calculated so a work schedule can be produced. 
 
-### Goals
+***
+
+## Goals
 
 #### User Goals
 
@@ -56,12 +58,13 @@ The app is designed for all restaurant bookings to be made through the app throu
     - To be able to see how many staff are required for the number of people booked.
     - To be able to reset the bookings and start again each week.
 
-### Structure
+### Project Flow and Processes
 
+- An initial flow chart was sketched out at conception of this project.
+- This was updated as the project evolved and a final flow chart was made on Lucidchart.
+- Each input was validated using a try/except statement, however this is not shown on the flow chart
 
-
-### Design
-
+![Flow Chart](/assets/images/flowchart.png)
 
 ### Limitations
 
@@ -146,21 +149,21 @@ is raised.
 
 ## Technologies
 
-- Languages
-    - The project was written using Python 3.8.11
-    -  The following modules and APIs were installed to improve the output and functionality:
-        - Math - Used for the ceil() function to round numbers up to the nearest integer
-        - Statistics - Used for the fmean() function to calculate the mean average and reduce the amount of code needed
-        - Gspread - API for Google Sheets used to get and update the worksheet 
-        - Google Auth - Authenticates Google's APIs and takes the credentials from the Google Sheets 
+### Languages
+- The project was written using Python 3.8.11
+-  The following modules and APIs were installed to improve the output and functionality:
+    - Math - Used for the ceil() function to round numbers up to the nearest integer
+    - Statistics - Used for the fmean() function to calculate the mean average and reduce the amount of code needed
+    - Gspread - API for Google Sheets used to get and update the worksheet 
+    - Google Auth - Authenticates Google's APIs and takes the credentials from the Google Sheets 
 
-- Tools    
-    - Gitpod was used as an online IDE
-    - Github was used as the repository for the source code
-    - Herkou was used as the platform to run the deployed app
-    - Google Sheets was used to store the data and where the initial "historical data" was held
-    - Code Institute's Python Essentials Template was used to view the app in a mock terminal
-    - PEP8 checker was used to check the Python code for errors 
+### Tools    
+- Gitpod was used as an online IDE
+- Github was used as the repository for the source code
+- Herkou was used as the platform to run the deployed app
+- Google Sheets was used to store the data and where the initial "historical data" was held
+- Code Institute's Python Essentials Template was used to view the app in a mock terminal
+- PEP8 checker was used to check the Python code for errors 
 
 ***
 
