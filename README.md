@@ -1,5 +1,5 @@
 # Restaurant Management App
-This website was built to give users the ability to create bookings, view the total number of bookings and calculate the number of staff required per day for a restaurant.  
+This app was built to give users the ability to create bookings, view the total number of bookings and calculate the number of staff required per day for a restaurant.  
 
 This app was made as the fulfillment of the Milestone Project 3 for the Full-Stack Software Development Course provided by Code Institute. It was made using Python and deployed on Heroku using Code Institue's mock terminal.
 
@@ -12,7 +12,7 @@ The live website can be found [here](https://restaurant-budget.herokuapp.com/)
 - [How to Use](#How-to-Use)
 - [Goals](#Goals)
     - [User Goals](#User-Goals)
-    - [Differences in finished site](#Differences-in-finished-site-to-initial-design)
+    - [Project Flow and Processes](#Project-Flow-and-Processes)
     - [Limitations](#Limitations)
 - [Features](#Features)
     - [Future Features](#Future-Features-to-Implement)
@@ -203,8 +203,21 @@ Thank you for using the restaurant management app"
 
 - I originally had the inputs accepting those starting both with and without a capital letter (e.g. Monday or monday). This made for a large number of if statements within my try statements. I didn't wish to remove the ability to use lower case as it takes away from the user friendliness of the app. To fix this I added the .capitalize() method to the end of all my input() functions, automatically Capitalizing the input, making them valid (provided the input is of the correct type).
 
-### Testing User Stories
+### Testing User Goals
 
+- The user goals listed in the User Goal section were tested to ensure the project outcomes were met and the app has good real world use.  
+
+1. To make a booking for a specific day inputting the number of guests required for the booking.
+    - Upon running the app select option 1 which allows the user to make a booking Monday - Sunday of up to 10 people
+2. To save this booking and it to add to the total number of people booked in that day. 
+    - Within option 1, the user has the option to save their booking, which adds the booking to the last row in the bookings worksheet
+3. To view the total number of people booked in on any given day in the week.
+    - Select option 2 in the main menu and a dictionary in the form {day: number of people booked} will be printed to the terminal for all days of the week
+4. To be able to see how many staff are required for the number of people booked.
+    - After running the app, select option 3 in the main menu. This choice will calculate the minimum number of staff required per day and print it in another dictionary in the form {day: number of staff needed}.
+5. To be able to reset the bookings and start again each week.
+    - Option 3 automatically resets the bookings back to 0 whilst calculating the number of staff needed. It gives the user the choice if they wish to proceed, incase it was pressed accidentally.
+    - The user can then restart the app with a new week and input new bookings
 
 ***
 
