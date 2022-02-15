@@ -14,10 +14,6 @@ CREDS = (Credentials.from_service_account_file("creds.json"))
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 SHEET = gspread.authorize(SCOPED_CREDS).open("restaurant_budget")
 
-# bookings = SHEET.worksheet("bookings")
-# data = bookings.get_all_values()
-# print(data)
-
 
 def request_action():
     """

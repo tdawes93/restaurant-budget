@@ -245,8 +245,8 @@ Testing will look for the following:
 
 ### Validator Testing
 
-- HTML 
-    - The official W3C validator came back with one error. 
+- Python
+    - The official PEP8 online syntax checker. 
 
     ![W3C Validator Results](assets/images/readme-images/w3-validator.PNG) 
 
