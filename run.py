@@ -281,10 +281,10 @@ def calculate_takings():
     walkins_row = [int(w) for w in walkins_data[-1]]
     covers = [x + y for x, y in zip(bookings_row, walkins_row)]
     takings_row = []
-    for i in range(0, 5):
+    for i in range(0, 4):
         takings = covers[i] * 15
         takings_row.append(takings)
-    for i in range(5, 7):
+    for i in range(4, 7):
         takings = covers[i] * 25
         takings_row.append(takings)
     return takings_row
@@ -298,12 +298,12 @@ def calculate_staff_required():
     takings_data = SHEET.worksheet("takings").get_all_values()
     takings_row = [int(b) for b in takings_data[-1]]
     staff_numbers = []
-    for i in range(0, 5):
+    for i in range(0, 4):
         staff = math.ceil(takings_row[i] / 400)
         if staff == 1:
             staff += 1
         staff_numbers.append(staff)
-    for i in range(5, 7):
+    for i in range(4, 7):
         staff = math.ceil((takings_row[i] / 400)) + 1
         staff_numbers.append(staff)
     return staff_numbers
@@ -337,7 +337,7 @@ def restart():
     """
     while True:
         choice = input(
-            "Would you like to return to the main menu? (Y/N):\n"
+            "\nWould you like to return to the main menu? (Y/N):\n"
             ).capitalize()
         if validate_check(choice):
             if choice == "Y":

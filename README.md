@@ -23,7 +23,7 @@ The live website can be found [here](https://restaurant-budget.herokuapp.com/)
     - [Overview](#Overview)
     - [Validator Testing](#Validator-Testing)
     - [Issues/Bugs Resolved During Testing](#Issues/Bugs-Resolved-During-Testing)
-    - [Testing User Stories](#Testing-User-Stories)
+    - [Testing User Goals](#Testing-User-Goals)
 - [Deployment](#Deployment)
 - [Credits](#Credits)
 - [Acknowledgments](#Acknowledgments)
@@ -58,21 +58,7 @@ The app is designed for all restaurant bookings to be made through the app throu
 
 ### Structure
 
-- A navigation bar will be on the homepage with links to each section/modal. Navbar titles will be Kick-off, Rules and League-Table. This fulfills the user stories:
-    - > "I want to understand the purpose of the site and learn how to play the game."
-    - > "To be able to know how to start the quiz and navigate the site immediately."
-- The homepage will provide a basic hook line drawing the user in and explaining what to do. This fulfills the user story:
-    - >"I want to understand the purpose of the site."
-- The use of CSS and media queries will make the website responsive. The initial design will be for mobile devices and the responsive design will ensure the layout changes as the screen size increases. This fulfills the user story:
-    - >"I want to be able to play the quiz on all devices"
-- The quiz section will contain a question container and then a results container when the quiz is finished. This will display the score to the user. This will fulfill the user story:
-    - >" To see my score when the quiz is finished."
-- The results modal will contain a short form where the user can input their name and save it to the league table. The league table modal will display the top 20 high scores in order from highest to lowest. This will fulfill the user stories: 
-    - >"To see my score when the quiz is finished."
-    - >"To be able to play the quiz on all devices."
-    - >"To find the saved League Table and try and beat the high scores."
-- The rules modal will contain a list of the rules and methods to play this quiz. This fulfills user story:
-    - >"To be able to know how to start the quiz and navigate the site immediately."
+
 
 ### Design
 
@@ -213,7 +199,8 @@ Thank you for using the restaurant management app"
 
     This was fixed by creating a new function "main_menu()" which only runs the "start()" function if the variable is True.
 
-- I originally had the inputs accepting those starting both with and without a capital letter (e.g. Monday or monday). This made for a large number of if statements within my try statements. I didn't wish to remove the ability to use lower case as it takes away from the user friendliness of the app. To fix this I added the .capitalize() method to the end of all my input() functions, automatically Capitalizing the input, making them valid (provided the input is of the correct type) 
+- I originally had the inputs accepting those starting both with and without a capital letter (e.g. Monday or monday). This made for a large number of if statements within my try statements. I didn't wish to remove the ability to use lower case as it takes away from the user friendliness of the app. To fix this I added the .capitalize() method to the end of all my input() functions, automatically Capitalizing the input, making them valid (provided the input is of the correct type).
+
 ### Testing User Stories
 
 
