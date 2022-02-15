@@ -62,11 +62,6 @@ The app is designed for all restaurant bookings to be made through the app throu
 
 ### Design
 
-### Differences in finished site to initial design 
-1. The "Kick-off" button is now placed in the centre of the homepage and coloured in gold. It was originally designed to be on the nav bar on the top left. However, after user feedback during the testing stage found that many users were unsure how to start the game, it was moved to be more clear and concise. 
-
-2. The initial site was going to include a share now button to enable the user to share their score on social media and encourage others to play the quiz. This feature was not implemented as the social media accounts do not exist and to keep the quiz simple to use. 
-
 
 ### Limitations
 
@@ -78,63 +73,67 @@ The app is designed for all restaurant bookings to be made through the app throu
 
 ### Existing Features
 
-#### Home Page
-- Header and navigation bar
-    - Located at the top of the homepage it allows the user to navigate between the rules and the league table modals.
-    - The design is styled on the official Arsenal FC website using the same colouring and container/box styles.
-    - The JavaScript will bring up the rules and league table modals when the corresponding button is clicked.
+#### Google Sheets
+- The Google Sheet was set up to host all the historical data the restaurant had been using up until this point.
+- The app will take data from this sheet and use it, in conjunction with new input data, to calculate the outputs (number of staff needed etc.)
+- All data used within this app; input data, data from calculations and output data; will be stored in this Google Sheet. 
+- The Google Sheet consists of four worksheets representing bookings, walk-ins, takings and number of staff on shift. Each worksheet has seven columns, representing the days of the week, and each row represents a new week. 
+- The bookings worksheet has an extra row, with all 0 as this is the starting point for each weeek where no bookings have been made yet. 
+![Google Sheets](/assets/images/google_sheets.png)
 
-![Header and Navigation bar](/assets/images/readme-images/navigation-bar.PNG)
-- Hook line and Kick-off button
-    - A short hook line is located just underneath the navbar, it allows the users to know what the website is about and what their first course of action should be.
-    - The Kick-off button is located centrally on the page and is a bright contrasting colour making it easy to find and obvious to the new user.
-    - The Kick-off button initiates the quiz, using JS when clicked, and pulls up the first question.
+#### Main Menu
+- The main menu welcomes the user to the app and asks them to select a choice of three options:
+    - Enter a new booking
+    - View the total number of bookings
+    - Calculate staff numbers required for the upcoming week
+- The user must answer using the numbers 1 to 3. If they input data that is not a number the error 
+> "Invalid data: invalid literal for int() with base 10" 
 
-![Hook line and Kick-off button](/assets/images/readme-images/hook-line-kickoff-button.PNG)
-- Footer
-    - The footer section contains my name and a link to my GitHub page so users know who the author is and where they can access other sites made by me. 
-    - It also matches the header creating symmetry and improving the style of the site.
+is raised.
+- If the user inputs a number that is not 1 to 3 they error
+> "Invalid data: Input must be 1, 2 or 3. Please try again" 
+
+is raised. 
+- The user is then asked to select again in both instances.
+![Main Menu Invalid Data](/assets/images/main_menu_invalid.png)
+
+#### Make Booking
+- Upon selecting option 1 the user is prompted to input a day of the week
+- Again an error will be raised if the data is invalid.
+- Once a valid input have been made the user will have to input the table size. This is limited between 1 and 10 (inclusive) to limit large tables without pre-ordering/deposits etc. This data is also validated
+- Successful input of the day and party size will result in the terminal printing out a dictionary summarising the booking and a message asking if you wish to save your booking. 
+- Should the user selects "Y" the user will be told the booking is saved. The Google Sheet will be updated to add the party size to the last row and relevant column in the bookings worksheet. 
+- If the user selects "N" no further action to the dictionary will be taken. Both choices are followed by the return the menu section, discussed later.  
+
+![Booking section](/assets/images/booking_section.png)
+
+#### View Bookings
+- If the user selects option 2, a total of all bookings per day is displayed.
+- This is displayed as a dictionary which has had it's order fixed to follow the order the days of the week fall.
+- If the user selects this option first or early on in their use it will display all 0 or mainly 0. This is because no or few bookings have been made and as more bookings are made this fill up. 
+
+![View Bookings](/assets/images/view_bookings.png)
+
+#### Calculate Staff Needed
+- If option 3 is chosen the user is met with a message explaining that calculating the number of staff resets the bookings for the following week and asks them if they have completed all their bookings.
+- Again the input for this answer is validated with errors raised in the event of invalid data.
+- If "N" is selected the user is taken back to the main menu and prompted to complete their bookings.
+- If "Y" is selected the calculating staff function is run. 
+- This function performs the following steps in order:
+    - Calculate the average number of walk-ins over the last 10 weeks 
+    - Iterates over the two lists adding the values together to create a "Total number of covers per day" list
+    - Multiplies the total covers list by 15 for Monday to Thursday and by 25 for Friday to Sunday to calculate the predicted takings in pounds. 
+    - Divides the predicted takings list by 400 to calculate the minimum number of staff required to work per day. 
+    - If the number is only 1, an extra staff member is added.
+    - If the day is Friday to Sunday and extra staff member is added
+    - This list is then used along with the days of the week to create a dictionary and printed to the terminal.
     
-![Footer](/assets/images/readme-images/footer.PNG)
-#### Quiz Container
-The quiz container is split into two sections the question section and the answers section.
-- Question Section
-    - The question section is a famous arsenal image with the question overlaid on top.
-    - The question is in 'bubble style' writing with a black border to allow the users to read the question.
-    - Above the image is a question counter so the user knows how many questions they have answered.
-    - JavaScript takes the question property from the relevant object in the questions array and places it into the inner HTML, displaying the question.
+![Calculate Staff](/assets/images/calculate_staff.png)
 
-![Question Section](/assets/images/readme-images/question-section.PNG)
-- Answers Section
-    - The answers section is made up of four potential answers inside buttons.
-    - The answers are generated in the same way as the question, the JD takes the answers property from the relevant object in the questions array.
-    - When the user selects their answer the correct answer will highlight the button in green. If the selected answer is wrong it will highlight in red, with the correct one in green.
-    - This is performed using an event listener comparing the Id of the clicked answer with the correctAnswer value in the questions array.
-    - The quiz then waits 1.5 seconds before moving on to the next question to allow the user to see if they answered correctly or not.
-
-![Answers Section](/assets/images/readme-images/answers-box.PNG)
-
-#### Results Section
-- Score and result
-    - The top part of the results section displays the score and the result category. The category gives a short humourous snippet that keeps the user engaged and motivates the user to try again.
-    - A for loop is run to bring up the different result categories and funny caption.
-    - The bottom half of the results section allows the user to input their username and save it to the league table.
-    - The save button will not be activated until a username has been typed into the input.
-    - Once the save button is clicked, the JavaScript will create an object from the score and name before adding it into the high socres array. This array is then ordered, spliced and stored in local storage.
-    - There is also a small nav bar with Homepage, Rematch and League-table buttons. This navbar allows the user to replay the game or navigate away from the results without saving their score.
-
-![Results Section](/assets/images/readme-images/results-section.PNG)
-#### League Table Modal
-- The league table modal contains a table displaying the top 20 scores and their respective "league" positions. This allows the user to see their score compared to other people around them.
-- The JS uses the .map() method to create a new object with using HTML and the highscores array, this is then added to the inner html of the table.
-- There is also a back button that takes the user back to the homepage.
-
-![League Table Modal](/assets/images/readme-images/league-table-section.PNG)
-#### Rules Modal
-- The rules modal contains a list of rules and methods on how to play the quiz.
-- It is styled the same as the league-table modal and also includes the back button.
-
-![Rules Modal](/assets/images/readme-images/rules-modal.PNG)
+#### Return to Main Menu
+- All choices are followed by an option to return to the main menu. 
+- If "Y" is selected it will return the user to the main menu where they can select again from the three initial options.
+- If "N" is selected the user is thanked for using the app and it ends. 
 
 ### Future Features to Implement
 - The ability to input a time of booking, not just day and number of people, would allow the user to have greater knowledge on when tables are booked.

@@ -82,6 +82,7 @@ def interpret_request(variable):
         print("You have selected an unavailable option. Please start again")
 
 
+# Functions for choice number 1
 def input_booking():
     """
     Get bookings inputted by user
@@ -145,18 +146,6 @@ def validate_people(number):
         return False
 
 
-def view_bookings():
-    """
-    Retreives the most up to date data from the bookings
-    worksheet and displays this weeks bookings to the user
-    """
-    bookings = SHEET.worksheet("bookings").get_all_values()
-    this_weeks_bookings = [int(n) for n in bookings[-1]]
-    days = bookings[0]
-    weekly_bookings = dict(zip(days, this_weeks_bookings))
-    return weekly_bookings
-
-
 def add_booking_to_spreadsheet(booking):
     """
     Takes the dictionary of the booking made by the user
@@ -209,6 +198,20 @@ def add_booking_to_spreadsheet(booking):
             break
 
 
+# Functions for choice number 2
+def view_bookings():
+    """
+    Retreives the most up to date data from the bookings
+    worksheet and displays this weeks bookings to the user
+    """
+    bookings = SHEET.worksheet("bookings").get_all_values()
+    this_weeks_bookings = [int(n) for n in bookings[-1]]
+    days = bookings[0]
+    weekly_bookings = dict(zip(days, this_weeks_bookings))
+    return weekly_bookings
+
+
+# Functions for choice number 3
 def calculate_staff_numbers():
     """
     Function that runs other functions to calculate how
