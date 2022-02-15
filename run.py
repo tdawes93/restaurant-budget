@@ -24,9 +24,8 @@ def request_action():
         print("Do you wish to:")
         print("1. Enter a new booking")
         print("2. View total number of bookings")
-        print("3. Calculate staff numbers required for following week\n")
+        print("3. Calculate staff numbers required for upcoming week\n")
         choice = input("Please type the number of your choice:\n")
-
         if validate_request(choice):
             break
     return choice
@@ -38,6 +37,7 @@ def validate_request(value):
     checks it's a valid answer
     """
     try:
+        int(value)
         if value not in ("1", "2", "3"):
             raise ValueError("Input must be 1, 2 or 3")
     except ValueError as error:

@@ -12,7 +12,6 @@ The live website can be found [here](https://restaurant-budget.herokuapp.com/)
 - [How to Use](#How-to-Use)
 - [Goals](#Goals)
     - [User Goals](#User-Goals)
-    - [Site Owner Goals](#Site-Owner-Goals)
     - [Differences in finished site](#Differences-in-finished-site-to-initial-design)
     - [Limitations](#Limitations)
 - [Features](#Features)
@@ -31,27 +30,31 @@ The live website can be found [here](https://restaurant-budget.herokuapp.com/)
 
 ****
 
-## UX Design 
+## How to Use
 
-### User Stories
+The Restaurant Management App is designed to improve efficiency, reduce errors and be an easy way for all restaurant managers to create bookings, view bookings and the minimum number of staff needed for each working day.
 
-#### First Time Visitor Expectations
+The user has three options upon opening the app:
 
-- As a first-time visitor I want:
+1. Enter a new booking
+2. View total number of bookings
+3. Caluclate staff numbers required for the upcoming week
 
-    - To understand the purpose of the site and learn how to play the game.
-    - To be able to know how to start the quiz and navigate the site immediately.
-    - To find the game interesting and challenging.
-    - To see my score when the quiz is finished.
-    - To be able to play the quiz on all devices.
+The user selects their desired option and follows the on screen instructions. Dependant on their choice they will be shown an output with their desired data.
 
-#### Returning/frequent Visitor Expectations
+The app is designed for all restaurant bookings to be made through the app throughout the previous week, then towards the end of the week the number of staff can be calculated so a work schedule can be produced. 
 
-- As a returning/frequent visitor I want:
+### Goals
 
-    - To continue to enjoy the quiz even after multiple attempts.
-    - To find the saved League Table and try and beat the high scores.
-    - To share my high score on social media.
+#### User Goals
+
+- As a user I want to be able:
+
+    - To make a booking for a specific day inputting the number of guests required for the booking.
+    - To save this booking and it to add to the total number of people booked in that day. 
+    - To view the total number of people booked in on any given day in the week.
+    - To be able to see how many staff are required for the number of people booked.
+    - To be able to reset the bookings and start again each week.
 
 ### Structure
 
@@ -73,45 +76,6 @@ The live website can be found [here](https://restaurant-budget.herokuapp.com/)
 
 ### Design
 
-#### Colour Scheme
-
-- The three main colours used were Red #EF0001, White #FFFFFF and Oxford Blue #172030. These colours were taken from the Arsenal FC logo to ensure they are official Arsenal FC colours. This allows the site to be instantly identifiable by football fans. 
-
-- The kick-off button is coloured in Metallic Sunburst #9D8349 and the background of the page is coloured in Cultured #F1F2F3. Both these colours are taken from the official Arsenal FC website and stick with the main theme.
-
-![Colour Scheme](/assets/images/readme-images/coolers.PNG)
-
-#### Typography
-
-- Source Sans Pro is used throughout the site. It is a sharp, clear and crisp font making it easy to read. It is similar to FF Meta which is the font used on the official Arsenal FC site.
-
-- The site uses uppercase for titles and buttons and capitalisation for all other text. This enables readability and allows the buttons to be easily identified.  
-
-- The font has a sans-serif backup.
-
-#### Imagery
-
-- The images were selected as they show famous moments in Arsenal's history. They were chosen to create excitement whilst being a trip down memory lane.
-
-- The images have been resized to be responsive.
-
-### Wireframes/Skeleton
-
-##### Home Page
-![Home Page Wireframe](/assets/images/wireframes/homepage.PNG)
-
-##### Quiz Container
-![Quiz Container Wireframe](/assets/images/wireframes/quiz-container.PNG)
-
-##### Results Modal
-![Results Modal Wireframe](/assets/images/wireframes/results-modal.PNG)
-
-##### Rules Modal
-![Rules Modal Wireframe](/assets/images/wireframes/rules-modal.PNG)
-
-##### League Table Modal
-![League Table Modal Wireframe](/assets/images/wireframes/league-table-modal.PNG)
-
 ### Differences in finished site to initial design 
 1. The "Kick-off" button is now placed in the centre of the homepage and coloured in gold. It was originally designed to be on the nav bar on the top left. However, after user feedback during the testing stage found that many users were unsure how to start the game, it was moved to be more clear and concise. 
 
@@ -120,8 +84,7 @@ The live website can be found [here](https://restaurant-budget.herokuapp.com/)
 
 ### Limitations
 
-- The functionality of the quiz is made using JavaScript (JS) meaning the quiz built in front-end development. If the user wanted to, they would be able to access the JS code and see the correct answers. In the future, the questions and programming code could be written in a back-end language to avoid this issue. 
-
+- As the app is run using Code Institue's Mock Terminal it doesn't offer a particularly user friendly interface. This could be improved by adapting the terminal or creating original HTML/CSS code for the app, turing it into a Full Stack Project.  
 
 ***
 
@@ -242,7 +205,7 @@ Testing will look for the following:
 
 - Upon deployment the dictionary showing the current weeks bookings that was printed to the terminal was difficult to read and spread over across two lines. This was resolved by installing the pprint() function to make it clearer in the terminal with each new key:value pairing print on a new line.
 
-- The fix above then created a new bug. In Python 3.8 + print orders dictionaries in order of creation of key:value pairs. pprint() orders them alphabectially by key. This was solved by adding "sort_dicts=False" inside each pprint function.
+- The fix above then created a new bug. In Python 3.8 + the print() function orders dictionaries in order of creation of key:value pairs. However, pprint() orders them alphabectially by key. This was solved by adding "sort_dicts=False" inside each pprint function.
 
 - If the user selected "Y" to return to the main menu within function "restart()" and then selected "N" to end the app once "restart()" is run a second time, two identical print statements were returned in the format:
      > "Thank you for using the restaurant management app.
@@ -256,8 +219,6 @@ Thank you for using the restaurant management app"
 ***
 
 ## Deployment 
-
-### GitHub Pages
 
 The project is hosted by Heroku using Code Institute's Python Essentials Mock Terminal:
 
