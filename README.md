@@ -9,21 +9,13 @@ The live website can be found [here](https://restaurant-budget.herokuapp.com/)
 
 ## Table of Contents
 
-- [UX Desgin](#UX-Design)
-    - [User Stories](#User-Stories)
-    - [Structure](#Structure)
-    - [Design](#Design)
-        - [Colour Scheme](#Colour-Scheme)
-        - [Typography](#Typography)
-        - [Imagery](#Imagery)
-    - [Wireframes/Skeleton](#Wireframes/Skeleton)
+- [How to Use](#How-to-Use)
+- [Goals](#Goals)
+    - [User Goals](#User-Goals)
+    - [Site Owner Goals](#Site-Owner-Goals)
     - [Differences in finished site](#Differences-in-finished-site-to-initial-design)
     - [Limitations](#Limitations)
 - [Features](#Features)
-    - [Home Page](#Home-Page)
-    - [Gallery](#Gallery)
-    - [Explore Page](#Explore-Page)
-    - [Booking Page](#Booking-Page)
     - [Future Features](#Future-Features-to-Implement)
 - [Technologies](#Technologies)
     - [Languages](#Languages)
@@ -34,9 +26,6 @@ The live website can be found [here](https://restaurant-budget.herokuapp.com/)
     - [Issues/Bugs Resolved During Testing](#Issues/Bugs-Resolved-During-Testing)
     - [Testing User Stories](#Testing-User-Stories)
 - [Deployment](#Deployment)
-    - [GitHub Pages](#GitHub-Pages)
-    - [Fork the GitHub](#Fork-the-GitHub)
-    - [Make a local clone](#Make-a-local-clone)
 - [Credits](#Credits)
 - [Acknowledgments](#Acknowledgments)
 
@@ -208,19 +197,20 @@ The quiz container is split into two sections the question section and the answe
 ## Technologies
 
 - Languages
-    - HTML was the main language used for structure and layout
-    - CSS was used the style the website
-    - JavaScript was the programming language used to run the game and add functionality to the buttons
+    - The project was written using Python 3.8.11
+    -  The following modules and APIs were installed to improve the output and functionality:
+        - Math - Used for the ceil() function to round numbers up to the nearest integer
+        - Statistics - Used for the fmean() function to calculate the mean average and reduce the amount of code needed
+        - Gspread - API for Google Sheets used to get and update the worksheet 
+        - Google Auth - Authenticates Google's APIs and takes the credentials from the Google Sheets 
 
 - Tools    
-    - Font Awesome was used for the icons for the social media links
     - Gitpod was used as an online IDE
     - Github was used as the repository for the source code
-    - Google Fonts was used for selecting the font styles
-    - Coolers.co was used for creating the colour palette, extracting the main colours from the hero image
-    - Balsamiq Wireframes was used to create the wireframes in the Structure section of the design
-    - Google Dev Tools was used for debugging throughout development and before deployment 
-    - Lighthouse was used to audit the website for quality and accessibility 
+    - Herkou was used as the platform to run the deployed app
+    - Google Sheets was used to store the data and where the initial "historical data" was held
+    - Code Institute's Python Essentials Template was used to view the app in a mock terminal
+    - PEP8 checker was used to check the Python code for errors 
 
 ***
 
