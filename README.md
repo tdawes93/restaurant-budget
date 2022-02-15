@@ -213,6 +213,7 @@ Thank you for using the restaurant management app"
 
     This was fixed by creating a new function "main_menu()" which only runs the "start()" function if the variable is True.
 
+- I originally had the inputs accepting those starting both with and without a capital letter (e.g. Monday or monday). This made for a large number of if statements within my try statements. I didn't wish to remove the ability to use lower case as it takes away from the user friendliness of the app. To fix this I added the .capitalize() method to the end of all my input() functions, automatically Capitalizing the input, making them valid (provided the input is of the correct type) 
 ### Testing User Stories
 
 
