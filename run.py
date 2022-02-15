@@ -75,7 +75,7 @@ def interpret_request(variable):
     elif variable == 2:
         weekly_bookings = view_bookings()
         print("Upcoming bookings this week:\n")
-        pprint(weekly_bookings)
+        pprint(weekly_bookings, sort_dicts=False)
     elif variable == 3:
         calculate_staff_numbers()
     else:
@@ -233,7 +233,7 @@ def calculate_staff_numbers():
                 staff_data = calculate_staff_required()
                 update_worksheet(staff_data, "number of staff")
                 staff_numbers = create_staff_numbers_dict()
-                pprint(staff_numbers)
+                pprint(staff_numbers, sort_dicts=False)
                 start_new_week()
                 break
             else:

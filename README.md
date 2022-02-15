@@ -253,7 +253,8 @@ Testing will look for the following:
 
 ### Issues/Bugs resolved during testing 
 
-- Upon deployment the dictionary showing the current weeks bookings that was printed to the terminal was difficult to read and spread over across two lines. 
+- Upon deployment the dictionary showing the current weeks bookings that was printed to the terminal was difficult to read and spread over across two lines. This was resolved by installing the pprint() function to make it clearer in the terminal with each new key:value pairing print on a new line.
+- The fix above then created a new bug. In Python 3.8 + print orders dictionaries in order of creation of key:value pairs. pprint() orders them alphabectially of key. This was solved by adding "sort_dicts=False" inside each pprint function.
 
 - If the user selected "Y" to return to the main menu within function "restart()" and then selected "N" to end the app once "restart()" is run a second time, two identical print statements were returned in the format:
      > "Thank you for using the restaurant management app.
