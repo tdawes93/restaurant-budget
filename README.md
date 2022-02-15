@@ -252,32 +252,6 @@ Thank you for using the restaurant management app"
 
 ### Testing User Stories
 
-The user stories explained in the UX Design section were tested to ensure they work as intended and are easy for the users to achieve. 
-
-As a first-time visitor I want:
-
-1. To understand the purpose of the site and learn how to play the game.
-    - Upon entering the site the hook line explains the function of the site and tells you how to start the quiz.
-    - The rules modal is easily found on the navbar, which brings up the set of rules and instructions on how to play.
-2. To find the game interesting and challenging.
-    - The questions are a range of difficulties and cover the entire history of the club.
-    - The quiz is interactive and provides funny feedback to keep users engaged.
-3. To see my score when the quiz is finished.
-    - The user can save their score to the league table which then automatically loads.
-    - The score is then saved into the site's local storage so can be accessed after reloading the page/closing and reopening it.
-4. To be able to play the quiz on all devices.
-    - Testing was performed across a variety of devices and browsers, all of which maintain design and function.
-
-As a returning/frequent visitor I want:
-
-1. To continue to enjoy the quiz even after multiple attempts.
-    - The competitive edge of most users will allow the user to continue to enjoy the game
-    - Within the features to implement section the quiz to have more questions added and include different teams to keep the quiz interesting and unique. 
-2. To find the saved League Table and try and beat the high scores.
-    - The league table button is easy to find and the league table loads automatically after saving the high score.
-3. To share my high score on social media.
-    - This user story has not been fulfilled but can be implemented in the future.
-
 
 ***
 
@@ -285,31 +259,47 @@ As a returning/frequent visitor I want:
 
 ### GitHub Pages
 
-The project is hosted by GitHub and deployed using the following steps:
+The project is hosted by Heroku using Code Institute's Python Essentials Mock Terminal:
 
-1. Log in to Github and locate the [Arsenal Quiz Repository](https://github.com/tdawes93/arsenal-quiz)
-2. Click the settings button on the menu
-3. Click 'Pages' on the list on the right or scroll down until you reach 'Github Pages' and click the link
-4. Under 'Sources' select 'main' on the drop-down called 'None' and click save
-5. The page will refresh with a link to the deployed site at the top, click this to go to the live website.
+### Deploy to Heroku
+
+Please deploy the app to Heroku using the following steps:
+
+1. Log into Heroku and click the 'New' button and then "Create new app" from the drop down list
+2. Name your app (it must be unique) and select the region you are based in
+3. Select settings and scroll down to the config vars section
+4. Within config vars enter CREDS into the key field and the contents of your creds.json file into the value field. This allows Herkou to have access to your Google Sheets.
+5. Add another config var of PORT (key) 8000 (value) to ensure the mock terminal works.
+6. Select the buildpack button and add two buildpacks of Python and NodeJS in that order
+7. In the connect to Github section, add the repository name to link the Github.
+8. Press deploy to deploy the app to Heroku, you can also opt in to "Enable Automatic Deploys" which updates the Heroku everytime a new change is pushed to Github.
 
 ### Fork the GitHub
 
 If you wish to view or make changes without affecting the original repository you can 'fork the repository'. This creates a copy to your GitHub and can be done using the following steps:
 
-1. Log in to Github and locate the [Arsenal Quiz Repository](https://github.com/tdawes93/arsenal-quiz)
+1. Log in to Github and locate the [Restaurant Budget Repository](https://github.com/tdawes93/restaurant-budget)
 2. At the top right of the repository underneath the notification icon is the 'fork' button
 3. Click this button and you should now have a copy of the repository in your Github account
 
 ### Make a local clone
 
-1. Log in to Github and locate the [Arsenal Quiz Repository](https://github.com/tdawes93/arsenal-quiz)
+1. Log in to Github and locate the [Restaurant Budget Repository](https://github.com/tdawes93/restaurant-budget)
 2. At the top of the repository next to the 'Gitpod' button click the dropdown named 'Code'
 3. To clone the repository using HTTPS, make sure HTTPS is selected and copy the link
 4. Open the Git Bash
 5. Change the working directory to the location you wish the clone to be made
 6. Type 'git clone' and paste the copied URL
 7. Press 'Enter' and your local clone will be created
+
+### Using repository with own historical data
+
+Please be aware that if you wish to use this repository for your own business or with your own historical data, you must use the following steps in addition to above:
+
+1. Create a Google Sheets using the same format as shown in the features section. It must have four worksheets and seven columns, all with the same names/labels as shown 
+2. In Google Cloud Platform, create a project and link the Google Sheets using the Google Drive and Google Sheets APIs
+3. Save the downloaded "credentials file" and upload it into your Gitpod in a cred.json file (this is the contents you need in the deployment section)
+4. You can now continue to deployment. 
 
 ***
 
