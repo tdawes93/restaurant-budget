@@ -188,9 +188,11 @@ The quiz container is split into two sections the question section and the answe
 ![Rules Modal](/assets/images/readme-images/rules-modal.PNG)
 
 ### Future Features to Implement
-- Questions could be randomised
-- Greater choice of questions that changes the quiz each time it loads which allows frequent users to have a better experience
-- Add a button allowing the user to select their favourite team which then brings up questions for each team improving user demand. 
+- The ability to input a time of booking, not just day and number of people, would allow the user to have greater knowledge on when tables are booked.
+- In addition each day could be split into three "services", breakfast, lunch and dinner. The app could then be updated to calculate staff required for each service for each day, providing a more realistic overview of how a restaurant needs to schedule it's staff. 
+- Another feature to be added in the future is the ability to make bookings further in the future than the current week. This could be done by using a date function, or a week commencing function.
+- Tieing into this the ability to view historical data/bookings/staff numbers without going to the Google Sheets would be useful to improve budgetting ability.
+- The four features above, are one step in the road into developing this app into a full business management/CRM style app. This is where I envision this app developing in the future. 
 
 ***
 
@@ -218,30 +220,15 @@ The quiz container is split into two sections the question section and the answe
 
 ### Overview
 
-Testing will be performed on the layout, structure and styling of the website. Tests were also performed on the functionality of the site. To do this dev-tools (and its other browser counterparts) will be used to view the site on different browsers and different device sizes.
-
-In addition, the deployed site will be tested directly on different devices. The devices used were:
-- Laptop with 1920 x 1080px screen
-- Google Pixel 3a phone
-- Huawei P20
-- One plus 8 Pro
+Testing will be performed on the functionality of the app. The ease of use and clarity will also be reviewed to ensure the back-end code integrates nicely with the front-end design. 
 
 Testing will look for the following:
 
-- All elements will remain where designed for all screen widths, with no overlapping or misalignment.
-- All buttons will direct correctly with external links opening in a new browser tab.
-- Correct answers will be displayed in green, incorrect answers in red.
-- The score is calculated correctly and resets when the user restarts the quiz either through the rematch button or kick-off button.
-- The form will not allow a blank username to be saved and all saved scores are placed in the local storage.
-- The saved score is added to the high scores array and stored in local storage.
-- Media shows clearly and is not distorted
-- HTML and CSS will be validated using W3C and Jigsaw
-- All pages will have a Lighthouse report generated to test for
-    - Performance
-    - Accessibility
-    - Good Practices
-    - SEO
-- The User Stories from the UX Design section will also be tested
+- The interaction and statements printed to the terminal are clear and easy to follow.
+- All inputs are checked and validated to ensure the user does not input invalid data type. Errors will be raised and an opportunity to try again will be allowed following invalid data entry.
+- No unexpected errors occur once deployed to Herkou and all errors raised are due to user input error.
+- The user is given the option to return to the main menu upon finishing their action for ease of use/
+- All bookings made by the user are saved to the Google Sheet and then can be pulled up prior to calculating staff numbers.
 
 ### Validator Testing
 
@@ -254,7 +241,8 @@ Testing will look for the following:
 ### Issues/Bugs resolved during testing 
 
 - Upon deployment the dictionary showing the current weeks bookings that was printed to the terminal was difficult to read and spread over across two lines. This was resolved by installing the pprint() function to make it clearer in the terminal with each new key:value pairing print on a new line.
-- The fix above then created a new bug. In Python 3.8 + print orders dictionaries in order of creation of key:value pairs. pprint() orders them alphabectially of key. This was solved by adding "sort_dicts=False" inside each pprint function.
+
+- The fix above then created a new bug. In Python 3.8 + print orders dictionaries in order of creation of key:value pairs. pprint() orders them alphabectially by key. This was solved by adding "sort_dicts=False" inside each pprint function.
 
 - If the user selected "Y" to return to the main menu within function "restart()" and then selected "N" to end the app once "restart()" is run a second time, two identical print statements were returned in the format:
      > "Thank you for using the restaurant management app.
