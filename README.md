@@ -246,14 +246,9 @@ Testing will look for the following:
 ### Validator Testing
 
 - Python
-    - The official PEP8 online syntax checker. 
+    - The official PEP8 online syntax checker came back with no issues. 
 
-    ![W3C Validator Results](assets/images/readme-images/w3-validator.PNG) 
-
-    - As the empty h2 tag will be filled from the script.js file when the game is run, this issue does not need to be fixed
-
-- CSS
-    - The official Jigsaw validator was used and came back with no errors.
+    ![PEP8 online checker](assets/images/pep8_checker.png) 
 
 ### Lighthouse Report
 - Lighthouse Reports for the quiz were run for all screen sizes. All areas tested: Performances, Accessibility, Good Practices and SEO were reported to be in the good range of 90-100.
