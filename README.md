@@ -304,19 +304,12 @@ Please be aware that if you wish to use this repository for your own business or
 ***
 
 ## Credits
-
-- Content
-    - General inspiration for the layout and functionality of the quiz was taken from [Buzzfeed Quizzes](https://www.buzzfeed.com/uk/quizzes) and Paul Bowden's [MP2 project](https://github.com/PaulBowden673/Projects-MP-MP2-Quiz). 
+- Inspiration
+    - The idea for this app along with suggested future updates was borne from countless weeks having to estimate takings and staff numbers required whilst managing pubs
 
 - Code
-    - The code for the saveScore function and the appendScore function was taken and adapted from James Q Quick's YouTube series [Build a Quiz App](https://www.youtube.com/channel/UC-T8W79DN6PBnzomelvqJYw).
+    - The update_worksheet function was take from Code Institute's Love Sandwiches Mini Project
 
-    - The method and some of the code for the checkAnswer function were taken from David Walsh's article on [Event Delegation](https://davidwalsh.name/event-delegate).
-
-    - The questions and answers were taken from [Fun Trivia Arsenal Section](https://www.funtrivia.com/en/Sports/Arsenal-7231.html).
-
-- Media
-    - All photos were either downloaded from [Unsplash](https://unsplash.com/) or [Pexels](https://www.pexels.com/).
 
 ***
 
