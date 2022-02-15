@@ -1,5 +1,6 @@
 import statistics
 import math
+from pprint import pprint
 import gspread
 from google.oauth2.service_account import Credentials
 
@@ -73,7 +74,8 @@ def interpret_request(variable):
         add_booking_to_spreadsheet(booking)
     elif variable == 2:
         weekly_bookings = view_bookings()
-        print(f"Upcoming bookings this week:\n{weekly_bookings}")
+        print("Upcoming bookings this week:\n")
+        pprint(weekly_bookings)
     elif variable == 3:
         calculate_staff_numbers()
     else:
@@ -222,7 +224,7 @@ def calculate_staff_numbers():
         if validate_check(check):
             if check == "Y":
                 print(
-                    "\nCalculating number of staff needed for the week..."
+                    "\nCalculating number of staff needed for the week...\n"
                     )
                 average_walkins = calculate_walkins()
                 update_worksheet(average_walkins, "walkins")
@@ -231,7 +233,7 @@ def calculate_staff_numbers():
                 staff_data = calculate_staff_required()
                 update_worksheet(staff_data, "number of staff")
                 staff_numbers = create_staff_numbers_dict()
-                print(f"\n{staff_numbers}")
+                pprint(staff_numbers)
                 start_new_week()
                 break
             else:

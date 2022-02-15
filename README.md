@@ -250,15 +250,16 @@ Testing will look for the following:
 
     ![PEP8 online checker](assets/images/pep8_checker.png) 
 
-### Lighthouse Report
-- Lighthouse Reports for the quiz were run for all screen sizes. All areas tested: Performances, Accessibility, Good Practices and SEO were reported to be in the good range of 90-100.
 
-![Lighthouse Report Desktop](assets/images/readme-images/lighthouse-report.PNG)
+### Issues/Bugs resolved during testing 
 
-### Issues/Bugs resolved during testing
-- After saving the score to the league table and replaying the quiz by clicking on Kick-off the game was adding the new score to the old score and the game was starting at question 10. This was resolved by resetting the variables, which control the score and question count, back to 0 within the displayLeagueTable function. 
-- The homepage was hidden after the quiz was run. This was due to the homepage style being changed to display = "none" when the buildQuiz function was run. This bug was fixed by adding a line to change the display back to block once the back function is run.
-- During the quiz if the user selected anywhere outside one of the answer buttons the element that was selected would turn red. This was fixed by removing the large chunk of HTML being added dynamically from the JS, inputting it into the index.html file and individually targetting the buttons to input the answers. The event listener target class was then changed to the answer button class, allowing only those classes to be selected and their background colour changed. 
+- Upon deployment the dictionary showing the current weeks bookings that was printed to the terminal was difficult to read and spread over across two lines. 
+
+- If the user selected "Y" to return to the main menu within function "restart()" and then selected "N" to end the app once "restart()" is run a second time, two identical print statements were returned in the format:
+     > "Thank you for using the restaurant management app.
+Thank you for using the restaurant management app"
+
+    This was fixed by creating a new function "main_menu()" which only runs the "start()" function if the variable is True.
 
 ### Testing User Stories
 
