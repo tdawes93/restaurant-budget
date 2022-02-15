@@ -105,7 +105,7 @@ is raised.
 - Again an error will be raised if the data is invalid.
 - Once a valid input has been made the user will have to input the table size. This is limited between 1 and 10 (inclusive) to limit large tables without pre-ordering/deposits etc. This data is also validated
 - Successful input of the day and party size will result in the terminal printing out a dictionary summarising the booking and a message asking if you wish to save your booking. 
-- Should the user selects "Y" the user will be told the booking is saved. The Google Sheet will be updated to add the party size to the last row and relevant column in the bookings worksheet. 
+- Should the user select "Y" the user will be told the booking is saved. The Google Sheet will be updated to add the party size to the last row and relevant column in the bookings worksheet. 
 - If the user selects "N" no further action to the dictionary will be taken. Both choices are followed by the return the menu section, discussed later.  
 
 ![Booking section](/assets/images/booking_section.png)
@@ -113,7 +113,7 @@ is raised.
 #### View Bookings
 - If the user selects option 2, a total of all bookings per day is displayed.
 - This is displayed as a dictionary that has had its order fixed to follow the order the days of the week fall.
-- If the user selects this option first or early on in their use it will display all 0 or mainly 0. This is because no or few bookings have been made and as more bookings are made this fill up. 
+- If the user selects this option first or early on in their use it will display all 0 or mainly 0. This is because no or few bookings have been made and as more bookings are made this will fill up. 
 
 ![View Bookings](/assets/images/view_bookings.png)
 
@@ -178,7 +178,7 @@ Testing will look for the following:
 - The interaction and statements printed to the terminal are clear and easy to follow.
 - All inputs are checked and validated to ensure the user does not input invalid data types. Errors will be raised and an opportunity to try again will be allowed following invalid data entry.
 - No unexpected errors occur once deployed to Heroku and all errors raised are due to user input errors.
-- The user is given the option to return to the main menu upon finishing their action for ease of use/
+- The user is given the option to return to the main menu upon finishing their action for ease of use.
 - All bookings made by the user are saved to the Google Sheet and then can be pulled up before calculating staff numbers.
 
 ### Validator Testing
@@ -191,7 +191,7 @@ Testing will look for the following:
 
 ### Issues/Bugs resolved during testing 
 
-- Upon deployment, the dictionary showing the current weeks bookings that was printed to the terminal was difficult to read and spread over across two lines. This was resolved by installing the pprint() function to make it clearer in the terminal with each new key:value pairing print on a new line.
+- Upon deployment, the dictionary showing the current weeks bookings that was printed to the terminal was difficult to read and spread over across two lines. This was resolved by installing the pprint() function to make it clearer in the terminal with each new key:value pairing printed on a new line.
 
 - The fix above then created a new bug. In Python 3.8 + the print() function orders dictionaries in order of creation of key:value pairs. However, pprint() orders them alphabetically by key. This was solved by adding "sort_dicts=False" inside each pprint function.
 
@@ -199,9 +199,9 @@ Testing will look for the following:
      > "Thank you for using the restaurant management app.
 Thank you for using the restaurant management app"
 
-    This was fixed by creating a new function "main_menu()" which only runs the "start()" function if the variable is True.
+    This was fixed by creating a new function "main_menu()" which only runs the "start()" function if the input variable is True.
 
-- I originally had the inputs accepting those starting both with and without a capital letter (e.g. Monday or monday). This made for a large number of if statements within my try statements. I didn't wish to remove the ability to use lower case as it takes away from the user-friendliness of the app. To fix this I added the .capitalize() method to the end of all my input() functions, automatically Capitalizing the input, making them valid (provided the input is of the correct type).
+- I originally had the inputs accepting data starting both with and without a capital letter (e.g. Monday or monday). This made for a large number of if statements within my try statements. I didn't wish to remove the ability to use lower case as it takes away from the user-friendliness of the app. To fix this I added the .capitalize() method to the end of all my input() functions, automatically Capitalizing the input, making them valid (provided the input is of the correct type).
 
 ### Testing User Goals
 
@@ -279,4 +279,4 @@ Please be aware that if you wish to use this repository for your own business or
 
 ## Acknowledgments
 
-I'd like to thank my mentor Spencer Bariball for his support and feedback throughout the project. I'd also like to thank the group of friends and family I had test and give feedback on the site on their various mobiles and laptops.
+I'd like to thank my mentor Spencer Bariball for his support and feedback throughout the project. 
