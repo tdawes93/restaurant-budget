@@ -1,3 +1,7 @@
+# *** EDIT 28th Nov 22 ***
+Due to the change in Heroku Dynos this app is now hosted on render. It can be found [here](https://restaurant-management-app.onrender.com/)
+
+
 # Restaurant Management App
 This app was built to give users the ability to create bookings, view the total number of bookings and calculate the number of staff required per day for a restaurant.  
 
